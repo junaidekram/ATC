@@ -287,8 +287,8 @@ function bearing(lat1, lon1, lat2, lon2) {
   let brng = toDeg(Math.atan2(y, x));
   brng = (brng + 360) % 360;
   return brng;  // True bearing
-  // For magnetic: subtract local magnetic declination (~2.5° W at ORD in 2024)
-  // brng_magnetic = (brng + 2.5 + 360) % 360;
+  // For magnetic heading: west declination means magnetic > true, so ADD the declination value.
+  // brng_magnetic = (brng + 2.5 + 360) % 360;  // +2.5° for 2.5° West declination at ORD
 }
 
 // Example: Runway 28R
@@ -298,7 +298,7 @@ const heading28R = bearing(41.9757, -87.8699, 41.9830, -87.9341);
 // → approximately 277° true / 278° magnetic → Runway 28
 ```
 
-**Magnetic Declination at ORD:** approximately **2.5° West** in 2024. Subtract from true heading to get magnetic. For Runway 28R: 280° magnetic.
+**Magnetic Declination at ORD:** approximately **2.5° West** in 2024. For west declination, **add** the declination value to the true heading to get magnetic heading: `magnetic = true + declination`. For Runway 28R: 277° true + 2.5° = ~280° magnetic → Runway 28.
 
 ---
 

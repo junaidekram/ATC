@@ -155,7 +155,7 @@
       "altitude_min_ft": 7000,
       "altitude_max_ft": 10000,
       "stack_separation_ft": 1000,
-      "inbound_heading": 090,
+      "inbound_heading": 90,
       "turn_direction": "right",
       "leg_time_min": 1
     },

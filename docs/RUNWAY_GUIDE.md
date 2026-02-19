@@ -160,7 +160,7 @@ ORD operates in different configurations based on wind:
 
 ### West Flow (Most Common — Westerly Winds)
 - **Arrivals:** 28R, 28C, 28L, 27R, 27L, 22L (if needed)
-- **Departures:** 32R, 28R, 28C, 27L, 22R
+- **Departures:** 28R, 28C, 27L, 09L
 - Notes: This is the default configuration ~55% of the time
 
 ### East Flow (Easterly Winds)
