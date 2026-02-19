@@ -1,0 +1,185 @@
+{
+  "metadata": {
+    "airport": "KORD",
+    "description": "Chicago O'Hare — STAR/SID waypoints and approach fixes",
+    "coordinate_system": "WGS84 decimal degrees",
+    "last_updated": "2024-01"
+  },
+  "approach_fixes": {
+    "MAAYO": { "lat": 41.9775, "lon": -88.0925, "type": "FAF", "runway": "28R", "altitude_ft": 2600 },
+    "VECTO": { "lat": 41.9732, "lon": -88.0825, "type": "FAF", "runway": "28C", "altitude_ft": 2600 },
+    "AKUNA": { "lat": 41.9698, "lon": -88.0725, "type": "FAF", "runway": "28L", "altitude_ft": 2600 },
+    "SMEEJ": { "lat": 41.9942, "lon": -88.0550, "type": "FAF", "runway": "27R", "altitude_ft": 2600 },
+    "ZEDAR": { "lat": 42.0298, "lon": -88.0050, "type": "FAF", "runway": "22R", "altitude_ft": 2600 }
+  },
+  "stars": {
+    "PAITN": {
+      "name": "PAITN STAR",
+      "description": "South arrival — from Dallas, Houston, Atlanta (southern variant)",
+      "approach_direction": "south",
+      "entry_bearing_from_ord": 190,
+      "waypoints": [
+        { "name": "PAITN", "lat": 41.2400, "lon": -87.9300, "altitude_ft": 8000, "speed_kt": 250 },
+        { "name": "VEECK", "lat": 41.4500, "lon": -87.9300, "altitude_ft": 7000, "speed_kt": 250 },
+        { "name": "BAGEL", "lat": 41.6200, "lon": -87.9300, "altitude_ft": 6000, "speed_kt": 220 },
+        { "name": "DENNT", "lat": 41.7500, "lon": -87.9300, "altitude_ft": 5000, "speed_kt": 210 },
+        { "name": "EARND", "lat": 41.8500, "lon": -87.9200, "altitude_ft": 4000, "speed_kt": 200 },
+        { "name": "MAAYO", "lat": 41.9775, "lon": -88.0925, "altitude_ft": 2600, "speed_kt": 180 }
+      ]
+    },
+    "WYNDE": {
+      "name": "WYNDE STAR",
+      "description": "Southeast arrival — from Atlanta (SE), Miami, Raleigh",
+      "approach_direction": "south-southeast",
+      "entry_bearing_from_ord": 165,
+      "waypoints": [
+        { "name": "WYNDE", "lat": 41.3000, "lon": -87.4000, "altitude_ft": 9000, "speed_kt": 250 },
+        { "name": "JOLIET", "lat": 41.5100, "lon": -87.6800, "altitude_ft": 7000, "speed_kt": 240 },
+        { "name": "BAGEL", "lat": 41.6200, "lon": -87.9300, "altitude_ft": 6000, "speed_kt": 220 },
+        { "name": "DENNT", "lat": 41.7500, "lon": -87.9300, "altitude_ft": 5000, "speed_kt": 210 },
+        { "name": "EARND", "lat": 41.8500, "lon": -87.9200, "altitude_ft": 4000, "speed_kt": 200 }
+      ]
+    },
+    "BENKY": {
+      "name": "BENKY STAR",
+      "description": "West arrival — from Denver, LA, Las Vegas, Phoenix, Seattle",
+      "approach_direction": "west",
+      "entry_bearing_from_ord": 250,
+      "waypoints": [
+        { "name": "BENKY", "lat": 42.1000, "lon": -88.9500, "altitude_ft": 11000, "speed_kt": 250 },
+        { "name": "KUBBS", "lat": 42.0500, "lon": -88.5500, "altitude_ft": 9000, "speed_kt": 250 },
+        { "name": "THUNE", "lat": 42.0000, "lon": -88.2000, "altitude_ft": 7000, "speed_kt": 230 },
+        { "name": "PLANO", "lat": 41.9800, "lon": -88.0500, "altitude_ft": 5500, "speed_kt": 210 },
+        { "name": "MAAYO", "lat": 41.9775, "lon": -88.0925, "altitude_ft": 2600, "speed_kt": 180 }
+      ]
+    },
+    "LEWKE": {
+      "name": "LEWKE STAR",
+      "description": "East arrival — from New York (JFK/EWR), Detroit, Cleveland, Pittsburgh",
+      "approach_direction": "east",
+      "entry_bearing_from_ord": 90,
+      "waypoints": [
+        { "name": "LEWKE", "lat": 42.0500, "lon": -86.8000, "altitude_ft": 12000, "speed_kt": 250 },
+        { "name": "PEOTONE", "lat": 41.3300, "lon": -87.8000, "altitude_ft": 9000, "speed_kt": 250 },
+        { "name": "DENNT", "lat": 41.7500, "lon": -87.9300, "altitude_ft": 5000, "speed_kt": 210 },
+        { "name": "EARND", "lat": 41.8500, "lon": -87.9200, "altitude_ft": 4000, "speed_kt": 200 }
+      ]
+    },
+    "WATSN": {
+      "name": "WATSN STAR",
+      "description": "East-Northeast arrival — from Boston, Toronto, Montreal",
+      "approach_direction": "east-northeast",
+      "entry_bearing_from_ord": 80,
+      "waypoints": [
+        { "name": "WATSN", "lat": 42.4000, "lon": -87.1000, "altitude_ft": 12000, "speed_kt": 250 },
+        { "name": "JANESVILLE", "lat": 42.6800, "lon": -89.0100, "altitude_ft": 10000, "speed_kt": 250 },
+        { "name": "OHARA", "lat": 42.1500, "lon": -87.9200, "altitude_ft": 6000, "speed_kt": 230 },
+        { "name": "DENNT", "lat": 41.7500, "lon": -87.9300, "altitude_ft": 5000, "speed_kt": 210 }
+      ]
+    },
+    "SWAPP": {
+      "name": "SWAPP STAR",
+      "description": "North arrival — from Minneapolis, Green Bay, Milwaukee",
+      "approach_direction": "north",
+      "entry_bearing_from_ord": 330,
+      "waypoints": [
+        { "name": "SWAPP", "lat": 42.7000, "lon": -87.9000, "altitude_ft": 9000, "speed_kt": 250 },
+        { "name": "WAUKEGAN", "lat": 42.4200, "lon": -87.9000, "altitude_ft": 7000, "speed_kt": 240 },
+        { "name": "OHARA", "lat": 42.1500, "lon": -87.9200, "altitude_ft": 5000, "speed_kt": 220 },
+        { "name": "EARND", "lat": 41.8500, "lon": -87.9200, "altitude_ft": 4000, "speed_kt": 200 }
+      ]
+    }
+  },
+  "sids": {
+    "BENKY_TWO": {
+      "name": "BENKY TWO DEPARTURE",
+      "description": "Westbound departures — to Denver, LA, Phoenix, Seattle",
+      "runway_ends": ["28R", "28C", "27R"],
+      "waypoints": [
+        { "name": "OHARE", "lat": 41.9802, "lon": -87.9090, "altitude_ft": 5000 },
+        { "name": "PLANO", "lat": 41.9800, "lon": -88.0500, "altitude_ft": 6000 },
+        { "name": "THUNE", "lat": 42.0000, "lon": -88.2000, "altitude_ft": 8000 },
+        { "name": "BENKY", "lat": 42.1000, "lon": -88.9500, "altitude_ft": 10000 }
+      ]
+    },
+    "LEWKE_TWO": {
+      "name": "LEWKE TWO DEPARTURE",
+      "description": "Eastbound departures — to New York, Boston, Detroit",
+      "runway_ends": ["09L", "10L", "10C"],
+      "waypoints": [
+        { "name": "OHARE", "lat": 41.9802, "lon": -87.9090, "altitude_ft": 5000 },
+        { "name": "EARND", "lat": 41.8500, "lon": -87.9200, "altitude_ft": 6000 },
+        { "name": "DENNT", "lat": 41.7500, "lon": -87.9300, "altitude_ft": 8000 },
+        { "name": "LEWKE", "lat": 42.0500, "lon": -86.8000, "altitude_ft": 11000 }
+      ]
+    },
+    "PAITN_ONE": {
+      "name": "PAITN ONE DEPARTURE",
+      "description": "Southbound departures — to Dallas, Atlanta, Miami, Houston",
+      "runway_ends": ["22L", "22R", "28R", "28C"],
+      "waypoints": [
+        { "name": "OHARE", "lat": 41.9802, "lon": -87.9090, "altitude_ft": 5000 },
+        { "name": "DENNT", "lat": 41.7500, "lon": -87.9300, "altitude_ft": 7000 },
+        { "name": "BAGEL", "lat": 41.6200, "lon": -87.9300, "altitude_ft": 8000 },
+        { "name": "PAITN", "lat": 41.2400, "lon": -87.9300, "altitude_ft": 10000 }
+      ]
+    },
+    "SWAPP_ONE": {
+      "name": "SWAPP ONE DEPARTURE",
+      "description": "Northbound departures — to Minneapolis, Green Bay",
+      "runway_ends": ["09L", "09R", "28R"],
+      "waypoints": [
+        { "name": "OHARE", "lat": 41.9802, "lon": -87.9090, "altitude_ft": 5000 },
+        { "name": "OHARA", "lat": 42.1500, "lon": -87.9200, "altitude_ft": 6000 },
+        { "name": "WAUKEGAN", "lat": 42.4200, "lon": -87.9000, "altitude_ft": 9000 },
+        { "name": "SWAPP", "lat": 42.7000, "lon": -87.9000, "altitude_ft": 11000 }
+      ]
+    }
+  },
+  "holding_fixes": [
+    {
+      "name": "PAITN",
+      "lat": 41.2400,
+      "lon": -87.9300,
+      "altitude_min_ft": 7000,
+      "altitude_max_ft": 9000,
+      "stack_separation_ft": 1000,
+      "inbound_heading": 360,
+      "turn_direction": "right",
+      "leg_time_min": 1
+    },
+    {
+      "name": "BENKY",
+      "lat": 42.1000,
+      "lon": -88.9500,
+      "altitude_min_ft": 7000,
+      "altitude_max_ft": 10000,
+      "stack_separation_ft": 1000,
+      "inbound_heading": 090,
+      "turn_direction": "right",
+      "leg_time_min": 1
+    },
+    {
+      "name": "LEWKE",
+      "lat": 42.0500,
+      "lon": -86.8000,
+      "altitude_min_ft": 8000,
+      "altitude_max_ft": 11000,
+      "stack_separation_ft": 1000,
+      "inbound_heading": 270,
+      "turn_direction": "right",
+      "leg_time_min": 1
+    },
+    {
+      "name": "SWAPP",
+      "lat": 42.7000,
+      "lon": -87.9000,
+      "altitude_min_ft": 6000,
+      "altitude_max_ft": 9000,
+      "stack_separation_ft": 1000,
+      "inbound_heading": 180,
+      "turn_direction": "right",
+      "leg_time_min": 1
+    }
+  ]
+}
