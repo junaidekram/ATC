@@ -1,0 +1,229 @@
+{
+  "metadata": {
+    "airport": "KORD",
+    "description": "ORD taxiway graph for pathfinding. Nodes are intersections, gates, hold-short points. Edges are taxiway segments.",
+    "coordinate_system": "WGS84 decimal degrees",
+    "note": "Coordinates are approximate. Use OSM Overpass data for precise values — see docs/MAP_SETUP_GUIDE.md"
+  },
+  "taxiways": [
+    {
+      "id": "A",
+      "name": "Alpha",
+      "description": "Main inner loop around north terminal complex",
+      "width_ft": 75,
+      "nodes": [
+        { "id": "A01", "lat": 41.9805, "lon": -87.9032 },
+        { "id": "A02", "lat": 41.9798, "lon": -87.9081 },
+        { "id": "A03", "lat": 41.9791, "lon": -87.9142 },
+        { "id": "A04", "lat": 41.9785, "lon": -87.9210 },
+        { "id": "A05", "lat": 41.9780, "lon": -87.9265 }
+      ]
+    },
+    {
+      "id": "B",
+      "name": "Bravo",
+      "description": "High-speed exit from 28R; parallel north side outer runways",
+      "width_ft": 75,
+      "nodes": [
+        { "id": "B01", "lat": 41.9820, "lon": -87.9010 },
+        { "id": "B02", "lat": 41.9820, "lon": -87.9080 },
+        { "id": "B03", "lat": 41.9820, "lon": -87.9150 },
+        { "id": "B04", "lat": 41.9820, "lon": -87.9250 },
+        { "id": "B05", "lat": 41.9820, "lon": -87.9330 }
+      ]
+    },
+    {
+      "id": "C",
+      "name": "Charlie",
+      "description": "Links Terminal 1 to outer runways, north-south connector",
+      "width_ft": 75,
+      "nodes": [
+        { "id": "C01", "lat": 41.9755, "lon": -87.8980 },
+        { "id": "C02", "lat": 41.9775, "lon": -87.8980 },
+        { "id": "C03", "lat": 41.9800, "lon": -87.8980 },
+        { "id": "C04", "lat": 41.9830, "lon": -87.8980 }
+      ]
+    },
+    {
+      "id": "F",
+      "name": "Foxtrot",
+      "description": "South bypass, links Terminal 3 to outer runways",
+      "width_ft": 75,
+      "nodes": [
+        { "id": "F01", "lat": 41.9720, "lon": -87.9080 },
+        { "id": "F02", "lat": 41.9720, "lon": -87.9150 },
+        { "id": "F03", "lat": 41.9720, "lon": -87.9200 },
+        { "id": "F04", "lat": 41.9720, "lon": -87.9290 }
+      ]
+    },
+    {
+      "id": "G",
+      "name": "Golf",
+      "description": "High-speed exit from 28C, south connector",
+      "width_ft": 75,
+      "nodes": [
+        { "id": "G01", "lat": 41.9740, "lon": -87.8990 },
+        { "id": "G02", "lat": 41.9750, "lon": -87.9050 },
+        { "id": "G03", "lat": 41.9755, "lon": -87.9120 },
+        { "id": "G04", "lat": 41.9760, "lon": -87.9200 }
+      ]
+    },
+    {
+      "id": "H",
+      "name": "Hotel",
+      "description": "High-speed exit from 28L, outer ring north",
+      "width_ft": 75,
+      "nodes": [
+        { "id": "H01", "lat": 41.9750, "lon": -87.9048 },
+        { "id": "H02", "lat": 41.9755, "lon": -87.9100 },
+        { "id": "H03", "lat": 41.9760, "lon": -87.9170 },
+        { "id": "H04", "lat": 41.9762, "lon": -87.9240 }
+      ]
+    },
+    {
+      "id": "J",
+      "name": "Juliet",
+      "description": "Links south apron area",
+      "width_ft": 50,
+      "nodes": [
+        { "id": "J01", "lat": 41.9692, "lon": -87.9010 },
+        { "id": "J02", "lat": 41.9700, "lon": -87.9050 },
+        { "id": "J03", "lat": 41.9705, "lon": -87.9120 }
+      ]
+    },
+    {
+      "id": "K",
+      "name": "Kilo",
+      "description": "High-speed exit 27R, parallel to 09L/27R north side",
+      "width_ft": 50,
+      "nodes": [
+        { "id": "K01", "lat": 41.9955, "lon": -87.9100 },
+        { "id": "K02", "lat": 41.9952, "lon": -87.9180 },
+        { "id": "K03", "lat": 41.9948, "lon": -87.9260 },
+        { "id": "K04", "lat": 41.9945, "lon": -87.9340 }
+      ]
+    },
+    {
+      "id": "L",
+      "name": "Lima",
+      "description": "High-speed exit 22L, outer south",
+      "width_ft": 75,
+      "nodes": [
+        { "id": "L01", "lat": 41.9880, "lon": -87.9240 },
+        { "id": "L02", "lat": 41.9900, "lon": -87.9220 },
+        { "id": "L03", "lat": 41.9920, "lon": -87.9200 },
+        { "id": "L04", "lat": 41.9940, "lon": -87.9180 }
+      ]
+    },
+    {
+      "id": "M",
+      "name": "Mike",
+      "description": "Main south loop around terminal south",
+      "width_ft": 75,
+      "nodes": [
+        { "id": "M01", "lat": 41.9762, "lon": -87.8860 },
+        { "id": "M02", "lat": 41.9770, "lon": -87.8920 },
+        { "id": "M03", "lat": 41.9780, "lon": -87.8970 },
+        { "id": "M04", "lat": 41.9790, "lon": -87.9010 }
+      ]
+    },
+    {
+      "id": "N",
+      "name": "November",
+      "description": "South-east connector to Terminal 5 (international)",
+      "width_ft": 50,
+      "nodes": [
+        { "id": "N01", "lat": 41.9760, "lon": -87.8780 },
+        { "id": "N02", "lat": 41.9765, "lon": -87.8820 },
+        { "id": "N03", "lat": 41.9770, "lon": -87.8860 }
+      ]
+    },
+    {
+      "id": "P",
+      "name": "Papa",
+      "description": "Links Terminal 5 area (international gates)",
+      "width_ft": 50,
+      "nodes": [
+        { "id": "P01", "lat": 41.9755, "lon": -87.8750 },
+        { "id": "P02", "lat": 41.9758, "lon": -87.8770 },
+        { "id": "P03", "lat": 41.9761, "lon": -87.8795 }
+      ]
+    },
+    {
+      "id": "Q",
+      "name": "Quebec",
+      "description": "Remote apron access, cargo area",
+      "width_ft": 50,
+      "nodes": [
+        { "id": "Q01", "lat": 42.0005, "lon": -87.8890 },
+        { "id": "Q02", "lat": 42.0000, "lon": -87.8950 },
+        { "id": "Q03", "lat": 41.9995, "lon": -87.9010 }
+      ]
+    },
+    {
+      "id": "R",
+      "name": "Romeo",
+      "description": "Links south runways to terminal south",
+      "width_ft": 75,
+      "nodes": [
+        { "id": "R01", "lat": 41.9695, "lon": -87.8970 },
+        { "id": "R02", "lat": 41.9700, "lon": -87.9000 },
+        { "id": "R03", "lat": 41.9705, "lon": -87.9050 },
+        { "id": "R04", "lat": 41.9710, "lon": -87.9100 }
+      ]
+    }
+  ],
+  "graph_edges": [
+    { "from": "A01", "to": "A02", "taxiway": "A", "distance_nm": 0.030 },
+    { "from": "A02", "to": "A03", "taxiway": "A", "distance_nm": 0.035 },
+    { "from": "A03", "to": "A04", "taxiway": "A", "distance_nm": 0.038 },
+    { "from": "A04", "to": "A05", "taxiway": "A", "distance_nm": 0.030 },
+    { "from": "B01", "to": "B02", "taxiway": "B", "distance_nm": 0.040 },
+    { "from": "B02", "to": "B03", "taxiway": "B", "distance_nm": 0.040 },
+    { "from": "B03", "to": "B04", "taxiway": "B", "distance_nm": 0.055 },
+    { "from": "B04", "to": "B05", "taxiway": "B", "distance_nm": 0.045 },
+    { "from": "C01", "to": "C02", "taxiway": "C", "distance_nm": 0.012 },
+    { "from": "C02", "to": "C03", "taxiway": "C", "distance_nm": 0.014 },
+    { "from": "C03", "to": "C04", "taxiway": "C", "distance_nm": 0.016 },
+    { "from": "F01", "to": "F02", "taxiway": "F", "distance_nm": 0.038 },
+    { "from": "F02", "to": "F03", "taxiway": "F", "distance_nm": 0.028 },
+    { "from": "F03", "to": "F04", "taxiway": "F", "distance_nm": 0.048 },
+    { "from": "G01", "to": "G02", "taxiway": "G", "distance_nm": 0.032 },
+    { "from": "G02", "to": "G03", "taxiway": "G", "distance_nm": 0.038 },
+    { "from": "G03", "to": "G04", "taxiway": "G", "distance_nm": 0.044 },
+    { "from": "A02", "to": "C03", "taxiway": "A-C", "distance_nm": 0.015 },
+    { "from": "B02", "to": "A01", "taxiway": "B-A", "distance_nm": 0.018 },
+    { "from": "F01", "to": "G01", "taxiway": "F-G", "distance_nm": 0.012 },
+    { "from": "A04", "to": "F02", "taxiway": "A-F", "distance_nm": 0.065 },
+    { "from": "B03", "to": "A02", "taxiway": "B-A2", "distance_nm": 0.022 },
+    { "from": "K01", "to": "K02", "taxiway": "K", "distance_nm": 0.044 },
+    { "from": "K02", "to": "K03", "taxiway": "K", "distance_nm": 0.044 },
+    { "from": "K03", "to": "K04", "taxiway": "K", "distance_nm": 0.044 }
+  ],
+  "hold_short_positions": [
+    { "id": "HS-28R-B", "runway": "28R", "taxiway": "B", "lat": 41.9820, "lon": -87.9075, "side": "east" },
+    { "id": "HS-28C-F", "runway": "28C", "taxiway": "F", "lat": 41.9720, "lon": -87.9085, "side": "east" },
+    { "id": "HS-28L-H", "runway": "28L", "taxiway": "H", "lat": 41.9750, "lon": -87.9050, "side": "east" },
+    { "id": "HS-27R-K", "runway": "27R", "taxiway": "K", "lat": 41.9950, "lon": -87.9355, "side": "east" },
+    { "id": "HS-27L-A", "runway": "27L", "taxiway": "A", "lat": 41.9812, "lon": -87.9300, "side": "east" },
+    { "id": "HS-09L-B", "runway": "09L", "taxiway": "B", "lat": 41.9938, "lon": -87.9005, "side": "west" },
+    { "id": "HS-10L-C", "runway": "10L", "taxiway": "C", "lat": 41.9757, "lon": -87.8710, "side": "west" }
+  ],
+  "gates": [
+    { "id": "K1", "terminal": "1", "lat": 41.9800, "lon": -87.9022, "type": "narrowbody", "taxiway_exit": "A01" },
+    { "id": "K6", "terminal": "1", "lat": 41.9805, "lon": -87.9035, "type": "narrowbody", "taxiway_exit": "A01" },
+    { "id": "K12", "terminal": "1", "lat": 41.9810, "lon": -87.9055, "type": "narrowbody", "taxiway_exit": "A02" },
+    { "id": "H7", "terminal": "2", "lat": 41.9795, "lon": -87.9075, "type": "narrowbody", "taxiway_exit": "A02" },
+    { "id": "H12", "terminal": "2", "lat": 41.9790, "lon": -87.9085, "type": "widebody", "taxiway_exit": "A03" },
+    { "id": "H15", "terminal": "2", "lat": 41.9787, "lon": -87.9110, "type": "widebody", "taxiway_exit": "A03" },
+    { "id": "F1", "terminal": "3", "lat": 41.9760, "lon": -87.9100, "type": "narrowbody", "taxiway_exit": "F02" },
+    { "id": "F6", "terminal": "3", "lat": 41.9755, "lon": -87.9130, "type": "narrowbody", "taxiway_exit": "F02" },
+    { "id": "G1", "terminal": "3", "lat": 41.9750, "lon": -87.9155, "type": "narrowbody", "taxiway_exit": "G03" },
+    { "id": "G10", "terminal": "3", "lat": 41.9745, "lon": -87.9175, "type": "widebody", "taxiway_exit": "G03" },
+    { "id": "C19", "terminal": "2", "lat": 41.9788, "lon": -87.8990, "type": "widebody", "taxiway_exit": "C03" },
+    { "id": "T1", "terminal": "3", "lat": 41.9740, "lon": -87.9200, "type": "narrowbody", "taxiway_exit": "F03" },
+    { "id": "T6", "terminal": "3", "lat": 41.9735, "lon": -87.9220, "type": "narrowbody", "taxiway_exit": "F03" },
+    { "id": "M1", "terminal": "5", "lat": 41.9770, "lon": -87.8870, "type": "widebody_intl", "taxiway_exit": "M02" },
+    { "id": "M18", "terminal": "5", "lat": 41.9762, "lon": -87.8895, "type": "widebody_intl", "taxiway_exit": "M01" }
+  ]
+}

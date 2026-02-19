@@ -1,0 +1,151 @@
+{
+  "metadata": {
+    "description": "Airline reference data — ICAO codes, callsigns, fleet types, and hubs",
+    "note": "All callsigns follow standard ICAO telephony designators"
+  },
+  "airlines": [
+    {
+      "icao": "UAL",
+      "iata": "UA",
+      "name": "United Airlines",
+      "callsign": "UNITED",
+      "hub_icao": "KORD",
+      "country": "USA",
+      "fleet_types": ["B737-800", "B737 MAX 8", "B757-200", "B767-300ER", "B777-200ER", "B787-9", "A319", "A320", "A321", "A220-300"],
+      "regional_partners": ["SKW", "MES", "TSX"],
+      "atis_phonetic": "United"
+    },
+    {
+      "icao": "AAL",
+      "iata": "AA",
+      "name": "American Airlines",
+      "callsign": "AMERICAN",
+      "hub_icao": "KORD",
+      "country": "USA",
+      "fleet_types": ["B737-800", "B737 MAX 8", "B757-200", "A319", "A320", "A321"],
+      "regional_partners": ["ENY", "PSA", "MTN"],
+      "atis_phonetic": "American"
+    },
+    {
+      "icao": "DAL",
+      "iata": "DL",
+      "name": "Delta Air Lines",
+      "callsign": "DELTA",
+      "hub_icao": "KATL",
+      "country": "USA",
+      "fleet_types": ["B737-800", "B757-200", "B767-300ER", "A220-300", "A319", "A320", "A321", "CRJ-900"],
+      "regional_partners": ["SKW", "RPA", "PDT"],
+      "atis_phonetic": "Delta"
+    },
+    {
+      "icao": "SWA",
+      "iata": "WN",
+      "name": "Southwest Airlines",
+      "callsign": "SOUTHWEST",
+      "hub_icao": "KMDW",
+      "country": "USA",
+      "fleet_types": ["B737-800", "B737 MAX 8"],
+      "regional_partners": [],
+      "atis_phonetic": "Southwest"
+    },
+    {
+      "icao": "ASA",
+      "iata": "AS",
+      "name": "Alaska Airlines",
+      "callsign": "ALASKA",
+      "hub_icao": "KSEA",
+      "country": "USA",
+      "fleet_types": ["B737-800", "B737 MAX 8", "B737-900", "A319", "A320", "A321"],
+      "regional_partners": ["ERA"],
+      "atis_phonetic": "Alaska"
+    },
+    {
+      "icao": "JBU",
+      "iata": "B6",
+      "name": "JetBlue Airways",
+      "callsign": "JETBLUE",
+      "hub_icao": "KJFK",
+      "country": "USA",
+      "fleet_types": ["A320", "A321"],
+      "regional_partners": [],
+      "atis_phonetic": "JetBlue"
+    },
+    {
+      "icao": "SKW",
+      "iata": "OO",
+      "name": "SkyWest Airlines (United Express / Delta Connection)",
+      "callsign": "SKYWEST",
+      "hub_icao": "KSLC",
+      "country": "USA",
+      "fleet_types": ["CRJ-700", "CRJ-900", "E175"],
+      "regional_partners": [],
+      "atis_phonetic": "SkyWest"
+    },
+    {
+      "icao": "MES",
+      "iata": "YX",
+      "name": "Mesa Airlines (United Express)",
+      "callsign": "AIR SHUTTLE",
+      "hub_icao": "KORD",
+      "country": "USA",
+      "fleet_types": ["CRJ-700", "CRJ-900", "E175"],
+      "regional_partners": [],
+      "atis_phonetic": "Air Shuttle"
+    },
+    {
+      "icao": "ENY",
+      "iata": "MQ",
+      "name": "Envoy Air (American Eagle)",
+      "callsign": "ENVOY AIR",
+      "hub_icao": "KORD",
+      "country": "USA",
+      "fleet_types": ["CRJ-700", "CRJ-900", "E175"],
+      "regional_partners": [],
+      "atis_phonetic": "Envoy"
+    },
+    {
+      "icao": "TSX",
+      "iata": "QX",
+      "name": "Horizon Air (Alaska)",
+      "callsign": "HORIZON AIR",
+      "hub_icao": "KSEA",
+      "country": "USA",
+      "fleet_types": ["E175", "Q400"],
+      "regional_partners": [],
+      "atis_phonetic": "Horizon"
+    },
+    {
+      "icao": "BAW",
+      "iata": "BA",
+      "name": "British Airways",
+      "callsign": "SPEEDBIRD",
+      "hub_icao": "EGLL",
+      "country": "UK",
+      "fleet_types": ["B777-200ER", "B787-9", "B767-300ER"],
+      "regional_partners": [],
+      "atis_phonetic": "Speedbird"
+    },
+    {
+      "icao": "LH",
+      "iata": "LH",
+      "name": "Lufthansa",
+      "callsign": "LUFTHANSA",
+      "hub_icao": "EDDF",
+      "country": "Germany",
+      "fleet_types": ["B747-400", "A350", "A380"],
+      "regional_partners": [],
+      "atis_phonetic": "Lufthansa"
+    },
+    {
+      "icao": "ACA",
+      "iata": "AC",
+      "name": "Air Canada",
+      "callsign": "AIR CANADA",
+      "hub_icao": "CYYZ",
+      "country": "Canada",
+      "fleet_types": ["B787-9", "B777-200ER", "A220-300", "A320", "A321"],
+      "regional_partners": ["JZA"],
+      "atis_phonetic": "Air Canada"
+    }
+  ]
+}
