@@ -1,0 +1,275 @@
+Phase 0 – Scope & Core Realism Requirements
+
+Airport: Chicago O’Hare International Airport (ORD)
+
+Airspace: Include approach/departure paths for arriving and departing aircraft.
+
+Simulation realism goals:
+
+Realistic number of aircraft on the ground and approaching.
+
+Realistic aircraft types (A350, 737, 320, regional jets, turboprops).
+
+Aircraft follow real-world speed and altitude profiles: taxiing, takeoff, climb, approach, landing.
+
+Aircraft follow actual approach/departure paths.
+
+Ground and air separation enforced dynamically.
+
+Players are in control like a real ATC: clearances, taxi instructions, runway assignment, holding patterns.
+
+Plane counts (initial realistic numbers):
+
+Ground: 20–40 planes at gates and taxiways.
+
+Airspace: 10–20 planes in holding patterns or on approach.
+
+Traffic ramp-up: As the game progresses, more planes appear; player must manage throughput.
+
+Phase 1 – Map & Airspace Design
+
+1. Map Selection & Scale:
+
+Sources:
+
+OpenStreetMap (OSM) for airport diagram, taxiways, runways.
+
+FAA airport diagrams (PDF) for terminal, gates, runway orientation.
+
+Optional: Use satellite imagery for the surrounding area.
+
+Recommended map range around Chicago:
+
+50 miles radius is realistic for approach/departure patterns.
+
+Provides enough space for multiple STARs and SID routes.
+
+Zoom levels:
+
+Max zoom out → 50 miles view for the player to see all planes.
+
+Close zoom → 1–2 mile radius around airport for gate/runway detail.
+
+2. Airspace Layers:
+
+Ground layer: Terminals, gates, taxiways, aprons.
+
+Runway layer: Mark runways with numbers, lengths, and orientation.
+
+Airspace layer:
+
+Arrival corridors (STARs) from all directions.
+
+Departure corridors (SIDs) from each runway.
+
+Holding patterns with assigned altitudes.
+
+Elevation:
+
+Include basic terrain elevation for realism (not crucial for visual collision, but for altitude display).
+
+Source: OpenTopoMap or SRTM (Shuttle Radar Topography Mission) data.
+
+3. Map Size Considerations:
+
+Chicago O’Hare airport footprint ~7 miles across.
+
+Surrounding airspace (50 miles) → covers all realistic approach and departure paths.
+
+Player should be able to zoom out for full control overview, zoom in for taxi/runway management.
+
+Phase 2 – Aircraft & Flight Dynamics
+
+1. Aircraft Data:
+
+Include:
+
+Type, wingspan, length, required runway distance.
+
+Max/min speed, climb/descent rates, taxi speeds.
+
+Gate assignment restrictions (widebody vs narrowbody).
+
+Use JSON or CSV to store aircraft specs.
+
+2. Flight Profiles:
+
+Ground:
+
+Taxi speed varies: 10–30 knots depending on aircraft type and congestion.
+
+Acceleration/deceleration when starting/stopping or turning.
+
+Takeoff:
+
+Acceleration along runway → rotation → climb → reach assigned departure speed/altitude.
+
+Approach/Landing:
+
+Reduce speed gradually on approach.
+
+Follow glide slope for descent (~3° standard).
+
+Touchdown → slow down → exit runway → taxi to gate.
+
+Real-time updates:
+
+Altitude, heading, and speed updated every frame.
+
+When a plane is selected in the side panel or on the map, display its live speed, altitude, next waypoint, and flight status.
+
+3. Dynamic Behavior:
+
+Planes can accelerate/decelerate in response to:
+
+Player instructions (hold, extend taxi route).
+
+Runway congestion.
+
+Approach pattern adjustments.
+
+Phase 3 – Traffic Management
+
+1. Realistic Traffic Levels:
+
+Ground:
+
+Start with realistic number of planes at gates: ~25–40.
+
+Include pushback and taxi sequences.
+
+Air:
+
+Arrival queue: 10–15 planes within 50 miles.
+
+Departure queue: planes waiting for takeoff clearance at gates or taxiways.
+
+2. ATC Control Responsibilities:
+
+Player clears planes for:
+
+Taxi to runway.
+
+Takeoff.
+
+Landing approach.
+
+Holding patterns or runway switches.
+
+Congestion consequences:
+
+Delays if the player doesn’t clear planes efficiently.
+
+Risk of collisions if clearances are mismanaged.
+
+3. Panels & Interaction:
+
+Takeoff queue panel: all planes ready to push back or taxi.
+
+Landing queue panel: all planes approaching the airport.
+
+Clickable plane → detailed info:
+
+Type, speed, altitude, heading, next waypoint, origin/destination.
+
+Buttons for clearance, hold, reroute.
+
+Phase 4 – Zoom & Visualization
+
+Dynamic plane icons:
+
+Zoomed out → simple icons for all planes.
+
+Zoomed in → detailed top-down aircraft with orientation and realistic sprite.
+
+Zoom limits:
+
+Max zoom out → full 50-mile view.
+
+Max zoom in → gate/runway details (2-mile radius).
+
+Elevation visualization:
+
+Show altitude numerically on the plane’s label.
+
+Optional: color-code altitude for quick visualization.
+
+Phase 5 – Pathfinding & Collision Management
+
+1. Ground Paths:
+
+Use A* or Dijkstra to navigate taxiways.
+
+Avoiding blocked paths and planes in front.
+
+2. Runway Use:
+
+Runway occupancy check:
+
+Only one plane on the runway at a time (realistic spacing).
+
+Separation rules for departures/arrivals (~3–5 nautical miles on approach).
+
+3. Airspace Collision Prevention:
+
+Planes maintain minimum vertical and horizontal separation:
+
+1000 ft vertical separation below 10,000 ft.
+
+3000 ft vertical above 10,000 ft.
+
+~3–5 nautical miles horizontal separation.
+
+Holding patterns automatically assigned if conflicts detected.
+
+Phase 6 – AI & Scheduling
+
+Arrivals: spawn planes at edges of 50-mile radius → follow STARs → enter holding pattern if needed.
+
+Departures: schedule departures from gates → taxi → runway → climb to assigned SID.
+
+Peak realism:
+
+Stagger arrivals/departures so player manages throughput.
+
+Include delays for missed clearances, congested taxiways/runways.
+
+Phase 7 – Sources for Maps and Data
+
+Airport diagrams & gates: FAA charts → https://www.faa.gov/air_traffic/flight_info/aeronav/digital_products/dafd
+
+Runways & taxiways: OpenStreetMap (OSM) → free, accurate coordinates.
+
+Elevation:
+
+SRTM (NASA) → ~30m resolution for surrounding terrain.
+
+OpenTopoMap → more readable.
+
+Airspace data:
+
+FAA Sectional charts → for STARs/SIDs and controlled airspace.
+
+Recommended Airspace Radius: 50 miles
+
+Captures all major approach paths and holding patterns.
+
+Enough space for realistic ATC workload without being overwhelming.
+
+Phase 8 – Performance & Real-Time Simulation
+
+Simulation loop:
+
+Update plane positions, speeds, altitude per frame.
+
+Update AI pathfinding when necessary.
+
+Update panels and UI in real time.
+
+Optimization:
+
+Only render visible planes.
+
+Use simplified icons when zoomed out.
+
+Limit AI calculations to active planes (near airport or selected).
