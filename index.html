@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ATC Simulator — Chicago O'Hare (KORD)</title>
+  <link rel="stylesheet" href="/src/styles/main.css">
+</head>
+<body>
+  <div id="app">
+
+    <!-- ── Header ──────────────────────────────────────────────────────── -->
+    <header class="header">
+      <div class="header-left">
+        <span class="header-logo">✈</span>
+        <h1>KORD Tower &amp; Ground</h1>
+      </div>
+      <div class="header-right">
+        <span id="sim-time"       class="hdr-info">00:00:00Z</span>
+        <span id="aircraft-count" class="hdr-info">0 aircraft</span>
+        <span id="score-display"  class="hdr-score">Score: 1000</span>
+        <!-- Simulation speed selector -->
+        <div class="speed-selector">
+          <span class="speed-label">SPD</span>
+          <button class="speed-btn" data-speed="1">1×</button>
+          <button class="speed-btn" data-speed="2">2×</button>
+          <button class="speed-btn" data-speed="4">4×</button>
+          <button class="speed-btn active" data-speed="10">10×</button>
+          <button class="speed-btn" data-speed="20">20×</button>
+        </div>
+        <span id="mode-indicator" class="hdr-mode"></span>
+      </div>
+    </header>
+
+    <!-- ── Layout ──────────────────────────────────────────────────────── -->
+    <div class="main-container">
+
+      <!-- Left: Map -->
+      <div class="map-container">
+        <div id="map"></div>
+
+        <!-- ATIS info overlay (top-left of map) -->
+        <div id="atis-panel" class="atis-panel"></div>
+
+        <!-- Map layer controls (bottom-left) -->
+        <div class="map-controls">
+          <button id="center-map"      title="Center on ORD">⊙ Center</button>
+          <button id="toggle-taxiways" class="active" title="Toggle taxiways">Taxiways</button>
+          <button id="toggle-ils"      class="active" title="Toggle ILS cones">ILS</button>
+          <button id="toggle-gates"    class="active" title="Toggle gates">Gates</button>
+        </div>
+      </div>
+
+      <!-- Right: Control Panel -->
+      <div class="control-panel">
+
+        <!-- Tabs -->
+        <div class="panel-tabs">
+          <button class="tab-btn active" data-tab="requests">
+            REQUESTS
+            <span id="req-badge" class="req-badge hidden">0</span>
+          </button>
+          <button class="tab-btn" data-tab="arrivals">ARRIVALS</button>
+          <button class="tab-btn" data-tab="comms">COMMS</button>
+          <button class="tab-btn" data-tab="info">AIRCRAFT</button>
+        </div>
+
+        <!-- Tab: Requests (ground operations) -->
+        <div class="tab-pane active" id="tab-requests">
+          <div id="requests-panel" class="requests-panel"></div>
+        </div>
+
+        <!-- Tab: Arrivals strip bay -->
+        <div class="tab-pane" id="tab-arrivals">
+          <div id="arrivals-panel" class="arrivals-panel"></div>
+        </div>
+
+        <!-- Tab: Communications log -->
+        <div class="tab-pane" id="tab-comms">
+          <div class="comms-inner">
+            <div id="comms-log" class="comms-log"></div>
+          </div>
+        </div>
+
+        <!-- Tab: Selected Aircraft Info -->
+        <div class="tab-pane" id="tab-info">
+          <div id="aircraft-info" class="aircraft-info-pane"></div>
+        </div>
+
+        <!-- Command Input — always visible -->
+        <div class="cmd-bar">
+          <span class="cmd-bar-icon">▶</span>
+          <input
+            type="text"
+            id="command-input"
+            list="callsign-datalist"
+            placeholder="ATC command (e.g. UAL123 push back)…"
+            autocomplete="off"
+            spellcheck="false"
+          />
+          <datalist id="callsign-datalist"></datalist>
+        </div>
+
+      </div><!-- end .control-panel -->
+    </div>
+  </div>
+
+  <script type="module" src="/src/main.ts"></script>
+</body>
+</html>

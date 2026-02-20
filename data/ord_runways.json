@@ -4,45 +4,133 @@
     "description": "Chicago O'Hare International Airport — ORD runway data",
     "magnetic_declination_deg": 2.5,
     "field_elevation_ft": 668,
-    "last_updated": "2024-01"
+    "last_updated": "2026-02",
+    "source": "OSM Overpass + FAA (ILS)"
   },
   "runways": [
+    {
+      "id": "04R/22L",
+      "id_a": "04R",
+      "id_b": "22L",
+      "heading_a_mag": 40,
+      "heading_b_mag": 220,
+      "heading_a_true": 41.4,
+      "heading_b_true": 221.4,
+      "length_ft": 12000,
+      "width_ft": 200,
+      "threshold_a": {
+        "runway_end": "04R",
+        "lat": 41.969927,
+        "lon": -87.879758,
+        "elevation_ft": 668
+      },
+      "threshold_b": {
+        "runway_end": "22L",
+        "lat": 41.953339,
+        "lon": -87.899422,
+        "elevation_ft": 665
+      },
+      "ils": {
+        "22L": {
+          "localizer_freq_mhz": 110.1,
+          "localizer_identifier": "I-ORQ",
+          "glide_slope_deg": 3,
+          "faf": null,
+          "dh_ft": 200,
+          "category": "IIIb",
+          "threshold_crossing_height_ft": 50
+        },
+        "04R": {
+          "localizer_freq_mhz": null,
+          "category": "I",
+          "glide_slope_deg": 3
+        }
+      },
+      "high_speed_exits": {
+        "22L": [
+          "L"
+        ],
+        "04R": []
+      },
+      "lighting": {},
+      "pcn": "",
+      "notes": "Long diagonal — heavy aircraft in south flow. ILS IIIb on 22L."
+    },
+    {
+      "id": "04L/22R",
+      "id_a": "04L",
+      "id_b": "22R",
+      "heading_a_mag": 40,
+      "heading_b_mag": 220,
+      "heading_a_true": 39.4,
+      "heading_b_true": 219.4,
+      "length_ft": 7500,
+      "width_ft": 150,
+      "threshold_a": {
+        "runway_end": "04L",
+        "lat": 41.997539,
+        "lon": -87.896387,
+        "elevation_ft": 668
+      },
+      "threshold_b": {
+        "runway_end": "22R",
+        "lat": 41.981663,
+        "lon": -87.913926,
+        "elevation_ft": 665
+      },
+      "ils": {
+        "22R": {
+          "localizer_freq_mhz": 109.1,
+          "localizer_identifier": "I-ORP",
+          "glide_slope_deg": 3,
+          "faf": "ZEDAR",
+          "dh_ft": 200,
+          "category": "I",
+          "threshold_crossing_height_ft": 50
+        },
+        "04L": null
+      },
+      "high_speed_exits": {},
+      "lighting": {},
+      "pcn": "",
+      "notes": "Short diagonal. South flow operations. ILS on 22R."
+    },
     {
       "id": "10L/28R",
       "id_a": "10L",
       "id_b": "28R",
       "heading_a_mag": 98,
       "heading_b_mag": 278,
-      "heading_a_true": 97,
-      "heading_b_true": 277,
+      "heading_a_true": 89.9,
+      "heading_b_true": 269.9,
       "length_ft": 13000,
       "width_ft": 200,
       "threshold_a": {
         "runway_end": "10L",
-        "lat": 41.9757,
-        "lon": -87.8699,
+        "lat": 41.969078,
+        "lon": -87.883748,
         "elevation_ft": 668
       },
       "threshold_b": {
         "runway_end": "28R",
-        "lat": 41.9830,
-        "lon": -87.9341,
+        "lat": 41.969002,
+        "lon": -87.931537,
         "elevation_ft": 665
       },
       "ils": {
         "28R": {
           "localizer_freq_mhz": 109.75,
           "localizer_identifier": "I-ORL",
-          "glide_slope_deg": 3.0,
+          "glide_slope_deg": 3,
           "faf": "MAAYO",
           "dh_ft": 200,
           "category": "IIIb",
           "threshold_crossing_height_ft": 50
         },
         "10L": {
-          "localizer_freq_mhz": 110.30,
+          "localizer_freq_mhz": 110.3,
           "localizer_identifier": "I-ORF",
-          "glide_slope_deg": 3.0,
+          "glide_slope_deg": 3,
           "faf": null,
           "dh_ft": 200,
           "category": "IIIb",
@@ -50,7 +138,10 @@
         }
       },
       "high_speed_exits": {
-        "28R": ["B", "G"],
+        "28R": [
+          "B",
+          "G"
+        ],
         "10L": []
       },
       "lighting": {
@@ -64,41 +155,85 @@
       "notes": "Primary arrival/departure runway — west flow. Triple simultaneous ops with 28C/28L."
     },
     {
+      "id": "09L/27R",
+      "id_a": "09L",
+      "id_b": "27R",
+      "heading_a_mag": 93,
+      "heading_b_mag": 273,
+      "heading_a_true": 90,
+      "heading_b_true": 270,
+      "length_ft": 7500,
+      "width_ft": 150,
+      "threshold_a": {
+        "runway_end": "09L",
+        "lat": 42.002839,
+        "lon": -87.899087,
+        "elevation_ft": 668
+      },
+      "threshold_b": {
+        "runway_end": "27R",
+        "lat": 42.002833,
+        "lon": -87.926677,
+        "elevation_ft": 665
+      },
+      "ils": {
+        "27R": {
+          "localizer_freq_mhz": 111.55,
+          "localizer_identifier": "I-ORN",
+          "glide_slope_deg": 3,
+          "faf": "SMEEJ",
+          "dh_ft": 200,
+          "category": "I",
+          "threshold_crossing_height_ft": 50
+        },
+        "09L": null
+      },
+      "high_speed_exits": {
+        "27R": [
+          "K"
+        ],
+        "09L": []
+      },
+      "lighting": {},
+      "pcn": "",
+      "notes": "North satellite runway. Primarily departures on 09L. ILS on 27R only."
+    },
+    {
       "id": "10C/28C",
       "id_a": "10C",
       "id_b": "28C",
       "heading_a_mag": 98,
       "heading_b_mag": 278,
-      "heading_a_true": 97,
-      "heading_b_true": 277,
+      "heading_a_true": 89.9,
+      "heading_b_true": 269.9,
       "length_ft": 13000,
       "width_ft": 200,
       "threshold_a": {
         "runway_end": "10C",
-        "lat": 41.9720,
-        "lon": -87.8721,
+        "lat": 41.965773,
+        "lon": -87.891825,
         "elevation_ft": 668
       },
       "threshold_b": {
         "runway_end": "28C",
-        "lat": 41.9793,
-        "lon": -87.9322,
+        "lat": 41.965705,
+        "lon": -87.93151,
         "elevation_ft": 665
       },
       "ils": {
         "28C": {
           "localizer_freq_mhz": 111.15,
           "localizer_identifier": "I-ORC",
-          "glide_slope_deg": 3.0,
+          "glide_slope_deg": 3,
           "faf": "VECTO",
           "dh_ft": 200,
           "category": "IIIb",
           "threshold_crossing_height_ft": 50
         },
         "10C": {
-          "localizer_freq_mhz": 111.90,
+          "localizer_freq_mhz": 111.9,
           "localizer_identifier": "I-ORC",
-          "glide_slope_deg": 3.0,
+          "glide_slope_deg": 3,
           "faf": null,
           "dh_ft": 200,
           "category": "IIIb",
@@ -106,7 +241,10 @@
         }
       },
       "high_speed_exits": {
-        "28C": ["G", "F"],
+        "28C": [
+          "G",
+          "F"
+        ],
         "10C": []
       },
       "lighting": {
@@ -116,7 +254,36 @@
         "centerline": "RCLS",
         "runway_end": "REL"
       },
+      "pcn": "",
       "notes": "Primary center runway — heavies and all aircraft. Concurrent with 28R."
+    },
+    {
+      "id": "09C/27C",
+      "id_a": "09C",
+      "id_b": "27C",
+      "heading_a_mag": 93,
+      "heading_b_mag": 273,
+      "heading_a_true": 90,
+      "heading_b_true": 270,
+      "length_ft": 11213,
+      "width_ft": 150,
+      "threshold_a": {
+        "runway_end": "09C",
+        "lat": 41.988316,
+        "lon": -87.890227,
+        "elevation_ft": 668
+      },
+      "threshold_b": {
+        "runway_end": "27C",
+        "lat": 41.988315,
+        "lon": -87.931581,
+        "elevation_ft": 668
+      },
+      "ils": {},
+      "high_speed_exits": {},
+      "lighting": {},
+      "pcn": "",
+      "notes": "OSM way 599431864 (ref: 09C/27C)"
     },
     {
       "id": "10R/28L",
@@ -124,27 +291,27 @@
       "id_b": "28L",
       "heading_a_mag": 98,
       "heading_b_mag": 278,
-      "heading_a_true": 97,
-      "heading_b_true": 277,
+      "heading_a_true": 89.9,
+      "heading_b_true": 269.9,
       "length_ft": 10000,
       "width_ft": 150,
       "threshold_a": {
         "runway_end": "10R",
-        "lat": 41.9685,
-        "lon": -87.8740,
+        "lat": 41.957256,
+        "lon": -87.900303,
         "elevation_ft": 668
       },
       "threshold_b": {
         "runway_end": "28L",
-        "lat": 41.9750,
-        "lon": -87.9246,
+        "lat": 41.957209,
+        "lon": -87.927866,
         "elevation_ft": 665
       },
       "ils": {
         "28L": {
           "localizer_freq_mhz": 110.55,
           "localizer_identifier": "I-ORM",
-          "glide_slope_deg": 3.0,
+          "glide_slope_deg": 3,
           "faf": "AKUNA",
           "dh_ft": 200,
           "category": "IIIb",
@@ -153,54 +320,18 @@
         "10R": {
           "localizer_freq_mhz": null,
           "category": "I",
-          "glide_slope_deg": 3.0
+          "glide_slope_deg": 3
         }
       },
       "high_speed_exits": {
-        "28L": ["H"],
+        "28L": [
+          "H"
+        ],
         "10R": []
       },
+      "lighting": {},
+      "pcn": "",
       "notes": "South parallel. Primarily arrivals on 28L during triple ops."
-    },
-    {
-      "id": "09L/27R",
-      "id_a": "09L",
-      "id_b": "27R",
-      "heading_a_mag": 93,
-      "heading_b_mag": 273,
-      "heading_a_true": 92,
-      "heading_b_true": 272,
-      "length_ft": 7500,
-      "width_ft": 150,
-      "threshold_a": {
-        "runway_end": "09L",
-        "lat": 41.9938,
-        "lon": -87.9003,
-        "elevation_ft": 668
-      },
-      "threshold_b": {
-        "runway_end": "27R",
-        "lat": 41.9950,
-        "lon": -87.9357,
-        "elevation_ft": 665
-      },
-      "ils": {
-        "27R": {
-          "localizer_freq_mhz": 111.55,
-          "localizer_identifier": "I-ORN",
-          "glide_slope_deg": 3.0,
-          "faf": "SMEEJ",
-          "dh_ft": 200,
-          "category": "I",
-          "threshold_crossing_height_ft": 50
-        },
-        "09L": null
-      },
-      "high_speed_exits": {
-        "27R": ["K"],
-        "09L": []
-      },
-      "notes": "North satellite runway. Primarily departures on 09L. ILS on 27R only."
     },
     {
       "id": "09R/27L",
@@ -208,133 +339,73 @@
       "id_b": "27L",
       "heading_a_mag": 93,
       "heading_b_mag": 273,
-      "heading_a_true": 92,
-      "heading_b_true": 272,
-      "length_ft": 7967,
+      "heading_a_true": 90,
+      "heading_b_true": 270,
+      "length_ft": 11223,
       "width_ft": 150,
       "threshold_a": {
         "runway_end": "09R",
-        "lat": 41.9800,
-        "lon": -87.8965,
+        "lat": 41.983913,
+        "lon": -87.89019,
         "elevation_ft": 668
       },
       "threshold_b": {
         "runway_end": "27L",
-        "lat": 41.9812,
-        "lon": -87.9298,
-        "elevation_ft": 665
-      },
-      "ils": {
-        "27L": {
-          "localizer_freq_mhz": 109.30,
-          "localizer_identifier": "I-ORO",
-          "glide_slope_deg": 3.0,
-          "faf": null,
-          "dh_ft": 200,
-          "category": "I",
-          "threshold_crossing_height_ft": 50
-        },
-        "09R": null
-      },
-      "notes": "Inner north runway. Primarily departures. ILS available on 27L."
-    },
-    {
-      "id": "04L/22R",
-      "id_a": "04L",
-      "id_b": "22R",
-      "heading_a_mag": 40,
-      "heading_b_mag": 220,
-      "heading_a_true": 39,
-      "heading_b_true": 219,
-      "length_ft": 7500,
-      "width_ft": 150,
-      "threshold_a": {
-        "runway_end": "04L",
-        "lat": 41.9650,
-        "lon": -87.9280,
+        "lat": 41.983901,
+        "lon": -87.931577,
         "elevation_ft": 668
       },
-      "threshold_b": {
-        "runway_end": "22R",
-        "lat": 42.0042,
-        "lon": -87.9002,
-        "elevation_ft": 665
-      },
-      "ils": {
-        "22R": {
-          "localizer_freq_mhz": 109.10,
-          "localizer_identifier": "I-ORP",
-          "glide_slope_deg": 3.0,
-          "faf": "ZEDAR",
-          "dh_ft": 200,
-          "category": "I",
-          "threshold_crossing_height_ft": 50
-        },
-        "04L": null
-      },
-      "notes": "Short diagonal. South flow operations. ILS on 22R."
-    },
-    {
-      "id": "04R/22L",
-      "id_a": "04R",
-      "id_b": "22L",
-      "heading_a_mag": 40,
-      "heading_b_mag": 220,
-      "heading_a_true": 39,
-      "heading_b_true": 219,
-      "length_ft": 12000,
-      "width_ft": 200,
-      "threshold_a": {
-        "runway_end": "04R",
-        "lat": 41.9590,
-        "lon": -87.9390,
-        "elevation_ft": 668
-      },
-      "threshold_b": {
-        "runway_end": "22L",
-        "lat": 42.0080,
-        "lon": -87.9041,
-        "elevation_ft": 665
-      },
-      "ils": {
-        "22L": {
-          "localizer_freq_mhz": 110.10,
-          "localizer_identifier": "I-ORQ",
-          "glide_slope_deg": 3.0,
-          "faf": null,
-          "dh_ft": 200,
-          "category": "IIIb",
-          "threshold_crossing_height_ft": 50
-        },
-        "04R": {
-          "localizer_freq_mhz": null,
-          "category": "I",
-          "glide_slope_deg": 3.0
-        }
-      },
-      "high_speed_exits": {
-        "22L": ["L"],
-        "04R": []
-      },
-      "notes": "Long diagonal — heavy aircraft in south flow. ILS IIIb on 22L."
+      "ils": {},
+      "high_speed_exits": {},
+      "lighting": {},
+      "pcn": "",
+      "notes": "OSM way 807922883 (ref: 09R/27L)"
     }
   ],
   "runway_configurations": {
     "west_flow": {
       "description": "Westerly winds — most common (~55% of time)",
-      "arrivals": ["28R", "28C", "28L", "27R"],
-      "departures": ["28R", "28C", "27L", "09L"],
-      "simultaneous_arrivals": ["28R", "28C", "27R"]
+      "arrivals": [
+        "28R",
+        "28C",
+        "28L",
+        "27R"
+      ],
+      "departures": [
+        "28R",
+        "28C",
+        "27L",
+        "09L"
+      ],
+      "simultaneous_arrivals": [
+        "28R",
+        "28C",
+        "27R"
+      ]
     },
     "east_flow": {
       "description": "Easterly winds",
-      "arrivals": ["10L", "10C", "10R"],
-      "departures": ["09L", "09R", "04R"]
+      "arrivals": [
+        "10L",
+        "10C",
+        "10R"
+      ],
+      "departures": [
+        "09L",
+        "09R",
+        "04R"
+      ]
     },
     "south_flow": {
       "description": "Southerly/crosswind operations",
-      "arrivals": ["22R", "22L"],
-      "departures": ["04L", "04R"]
+      "arrivals": [
+        "22R",
+        "22L"
+      ],
+      "departures": [
+        "04L",
+        "04R"
+      ]
     }
   },
   "hotspots": [
@@ -349,21 +420,21 @@
       "id": "HS-2",
       "location": "Taxiway B / Runway 32L crossing",
       "lat": 41.9835,
-      "lon": -87.9080,
+      "lon": -87.908,
       "risk": "Short crossing, poor visibility"
     },
     {
       "id": "HS-3",
       "location": "Taxiway G / Runway 10C-28C crossing",
-      "lat": 41.9760,
-      "lon": -87.9100,
+      "lat": 41.976,
+      "lon": -87.91,
       "risk": "High-speed exit confusion"
     },
     {
       "id": "HS-4",
       "location": "Taxiway K / Runway 09L intersection",
-      "lat": 41.9940,
-      "lon": -87.9100,
+      "lat": 41.994,
+      "lon": -87.91,
       "risk": "Complex intersection, limited sight lines"
     }
   ]
