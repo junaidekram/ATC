@@ -57,7 +57,7 @@ export interface FlightData {
   origin_city?: string;
   destination_icao: string;
   destination_city?: string;
-  approach_bearing_from_ord?: number;
+  approach_bearing_from_slc?: number;
   star?: string;
   /** Arriving / airborne / active aircraft have this field */
   initial_position?: { lat: number; lon: number };
@@ -65,7 +65,7 @@ export interface FlightData {
   current_position?: { lat: number; lon: number };
   /** Parked aircraft with no explicit position — look up from gate data */
   gate?: string;
-  /** MSL altitude in feet; defaults to field elevation (668 ft) for ground aircraft */
+  /** MSL altitude in feet; defaults to field elevation (4227 ft) for ground aircraft */
   initial_altitude_ft?: number;
   /** Speed in knots; defaults to 0 for parked/taxi aircraft */
   initial_speed_kts?: number;
@@ -95,7 +95,7 @@ export interface Airline {
 }
 
 /**
- * Waypoint data from ord_waypoints.json
+ * Waypoint data from slc_waypoints.json
  */
 export interface Waypoint {
   name: string;
@@ -208,6 +208,11 @@ export class DataLoader {
     adjacency: new Map(),
     nodeToTaxiways: new Map(),
   };
+  /**
+   * Gate backup paths keyed by gate id.
+   * Each entry is an ordered list of lat/lon waypoints from gate outward (for pushback).
+   */
+  private gateBackupPaths: Map<string, { lat: number; lon: number; nodeId: string }[]> = new Map();
 
   private constructor() {}
 
@@ -230,22 +235,43 @@ export class DataLoader {
     try {
       console.log('Loading data files...');
 
-      // Load all JSON files in parallel
+      type TaxiwayFileShape = { taxiways: RawTaxiway[]; gates?: RawGate[]; graph_edges?: RawGraphEdge[] };
+
+      // Load everything except taxiway-lines in parallel;
+      // we resolve taxiway-lines separately so we can try custom_taxiways.json first.
       const [
         aircraftSpecsData,
         airlinesData,
         runwaysData,
-        taxiwaysData,
+        airportTaxiwayData,   // always loaded — provides gates
         waypointsData,
         sampleFlightsData
       ] = await Promise.all([
         this.fetchJSON<{ aircraft: AircraftSpec[] }>('/data/aircraft_specs.json'),
         this.fetchJSON<{ airlines: Airline[] }>('/data/airlines.json'),
-        this.fetchJSON<{ runways: RawRunway[] }>('/data/ord_runways.json'),
-        this.fetchJSON<{ taxiways: RawTaxiway[]; gates?: RawGate[]; graph_edges?: RawGraphEdge[] }>('/data/ord_taxiways.json'),
-        this.fetchJSON<WaypointsFile>('/data/ord_waypoints.json'),
+        this.fetchJSON<{ runways: RawRunway[] }>('/data/slc_runways.json'),
+        this.fetchJSON<TaxiwayFileShape>('/data/slc_taxiways.json'),
+        this.fetchJSON<WaypointsFile>('/data/slc_waypoints.json'),
         this.fetchJSON<{ initial_arrivals: FlightData[]; initial_departures: FlightData[]; aircraft_in_flight?: FlightData[] }>('/data/sample_flights.json')
       ]);
+
+      // ── Custom taxiway network override ──────────────────────────────────
+      // If data/custom_taxiways.json exists (written by the editor), use it
+      // for taxiway LINES and routing edges.  Gates always come from the
+      // airport base file so gate positions / ids are never lost.
+      let taxiwaysData: TaxiwayFileShape = airportTaxiwayData;
+      try {
+        const customResp = await fetch('/data/custom_taxiways.json');
+        if (customResp.ok) {
+          const custom = await customResp.json() as TaxiwayFileShape;
+          if (Array.isArray(custom.taxiways)) {
+            taxiwaysData = custom;
+            console.log('📐 Loaded custom taxiway network (custom_taxiways.json) —',
+              custom.taxiways.length, 'taxiways,',
+              (custom.graph_edges ?? []).length, 'edges');
+          }
+        }
+      } catch { /* no custom file or parse error — silently fall back */ }
 
       // Process aircraft specs
       aircraftSpecsData.aircraft.forEach(spec => {
@@ -270,8 +296,31 @@ export class DataLoader {
         coordinates: tw.nodes.map(n => ({ lat: n.lat, lon: n.lon }))
       }));
 
-      // Process gates (include parking stand coords and nose heading if present)
-      this.gates = (taxiwaysData.gates ?? []).map(g => ({
+      // Extract gate backup paths — taxiways with subtype 'gate_backup'
+      // whose first or last node id is 'GATE_{gateId}'
+      this.gateBackupPaths.clear();
+      for (const tw of taxiwaysData.taxiways) {
+        if (tw.subtype !== 'gate_backup' || tw.nodes.length < 2) continue;
+        const first = tw.nodes[0];
+        const last  = tw.nodes[tw.nodes.length - 1];
+        // Check if first node is the gate end
+        const firstGateMatch = first.id.match(/^GATE_(.+)$/);
+        const lastGateMatch  = last.id.match(/^GATE_(.+)$/);
+        if (firstGateMatch) {
+          const gateId = firstGateMatch[1];
+          // Waypoints go from first (gate) outward: [0, 1, 2, ...]
+          this.gateBackupPaths.set(gateId, tw.nodes.map(n => ({ lat: n.lat, lon: n.lon, nodeId: n.id })));
+        } else if (lastGateMatch) {
+          const gateId = lastGateMatch[1];
+          // Reverse so waypoints go from gate outward
+          const reversed = [...tw.nodes].reverse();
+          this.gateBackupPaths.set(gateId, reversed.map(n => ({ lat: n.lat, lon: n.lon, nodeId: n.id })));
+        }
+      }
+
+      // Gates ALWAYS come from the airport base file — never from the custom
+      // taxiway network (which only contains taxiway centerlines).
+      this.gates = (airportTaxiwayData.gates ?? []).map(g => ({
         id: g.id,
         terminal: g.terminal,
         lat: g.lat,
@@ -307,11 +356,10 @@ export class DataLoader {
 
       // ── Gate stand nodes ──────────────────────────────────────────────────
       // Each gate becomes a first-class graph node so Dijkstra can route
-      // directly to/from every gate stand.  The gate connector edges emitted
-      // by convert_osm.mjs are already in graph_edges above; we just need to
-      // register the gate stand coordinates in nodeMap so the router can
-      // snap to them and the pathfinder can reach them.
-      const gateData = taxiwaysData.gates ?? [];
+      // directly to/from every gate stand.  Gates always come from the airport
+      // base file.  If a custom taxiway network is in use, the taxiway_exit
+      // IDs may not match — fall back to nearest-node snapping in that case.
+      const gateData = airportTaxiwayData.gates ?? [];
       for (const gate of gateData) {
         const standLat = gate.parking_lat ?? gate.lat;
         const standLon = gate.parking_lon ?? gate.lon;
@@ -323,20 +371,34 @@ export class DataLoader {
         if (!existing.includes('GATE')) existing.push('GATE');
         nodeToTaxiways.set(gateNodeId, existing);
 
-        // Ensure the connector edge to taxiway_exit exists in adjacency
-        // (convert_osm.mjs already puts these in graph_edges, but add a
-        //  fallback in case this is an older data file without them).
-        if (gate.taxiway_exit && nodeMap.has(gate.taxiway_exit)) {
-          const already = (adjacency.get(gateNodeId) ?? []).some(e => e.to === gate.taxiway_exit);
+        // Determine which taxiway node to connect this gate to.
+        // Prefer the declared taxiway_exit if it exists in the current graph;
+        // otherwise snap to the nearest node (needed for custom networks).
+        let exitNodeId: string | null = null;
+        if (gate.taxiway_exit && nodeMap.has(gate.taxiway_exit) &&
+            gate.taxiway_exit !== gateNodeId) {
+          exitNodeId = gate.taxiway_exit;
+        } else if (nodeMap.size > 0) {
+          // Find nearest non-gate node in the graph
+          let bestDist = Infinity;
+          for (const [nid, npos] of nodeMap) {
+            if (nid === gateNodeId || nid.startsWith('GATE_')) continue;
+            const d = DataLoader.haversineFt(standLat, standLon, npos.lat, npos.lon);
+            if (d < bestDist) { bestDist = d; exitNodeId = nid; }
+          }
+        }
+
+        if (exitNodeId) {
+          const already = (adjacency.get(gateNodeId) ?? []).some(e => e.to === exitNodeId);
           if (!already) {
-            const exitNode = nodeMap.get(gate.taxiway_exit)!;
+            const exitNode = nodeMap.get(exitNodeId)!;
             const d = DataLoader.haversineFt(standLat, standLon, exitNode.lat, exitNode.lon);
             const fwd = adjacency.get(gateNodeId) ?? [];
-            fwd.push({ to: gate.taxiway_exit, distFt: d });
+            fwd.push({ to: exitNodeId, distFt: d });
             adjacency.set(gateNodeId, fwd);
-            const bwd = adjacency.get(gate.taxiway_exit) ?? [];
+            const bwd = adjacency.get(exitNodeId) ?? [];
             bwd.push({ to: gateNodeId, distFt: d });
-            adjacency.set(gate.taxiway_exit, bwd);
+            adjacency.set(exitNodeId, bwd);
           }
         }
       }
@@ -513,6 +575,15 @@ export class DataLoader {
 
   getTaxiwayGraph(): TaxiwayGraphData {
     return this.taxiwayGraph;
+  }
+
+  /**
+   * Returns the gate backup pushback path for the given gate id, or null if none.
+   * Waypoints are ordered from the gate outward (pushback direction).
+   * The first waypoint is at the gate; subsequent waypoints trace the path.
+   */
+  getGateBackupPath(gateId: string): { lat: number; lon: number; nodeId: string }[] | null {
+    return this.gateBackupPaths.get(gateId) ?? null;
   }
 
   getGates(): Gate[] {

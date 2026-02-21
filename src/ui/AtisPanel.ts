@@ -49,7 +49,7 @@ export class AtisPanel {
 
     this.container.innerHTML = `
       <div class="atis-header">
-        <span class="atis-station">KORD ATIS</span>
+        <span class="atis-station">KSLC ATIS</span>
         <span class="atis-letter">${letter}</span>
       </div>
       <div class="atis-body">

@@ -28,7 +28,7 @@ const APP_CRITICAL_NM  = 1.5;
 /** Vertical separation (ft) */
 const VERT_SEP_LOW  = 1_000;   // below FL100
 const VERT_SEP_HIGH = 2_000;   // at/above FL100
-const FL100_FT      = 10_668;  // 10,000 ft MSL (ORD elev ~668 ft)
+const FL100_FT      = 14_227;  // 10,000 ft AGL (SLC elev ~4,227 ft MSL)
 
 /** Lateral band within which vertical sep is checked (NM) */
 const LATERAL_VERT_NM = 5.0;
@@ -37,9 +37,9 @@ const LATERAL_VERT_NM = 5.0;
  *  to a runway threshold before we auto-hold it */
 export const RUNWAY_HOLD_NM = 0.030;  // ~180 ft
 
-/** KORD airport reference position */
-const ORD_LAT = 41.9802;
-const ORD_LON = -87.9090;
+/** KSLC airport reference position */
+const ORD_LAT = 40.7884;
+const ORD_LON = -111.9779;
 
 // ── Wake turbulence categories ────────────────────────────────────────────────
 

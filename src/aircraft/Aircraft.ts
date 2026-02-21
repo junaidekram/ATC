@@ -1,8 +1,8 @@
 import { FlightPhase, type AircraftState, type Position, type TaxiWaypoint } from './FlightPhase';
 import { Physics } from './Physics';
 
-// ORD field elevation (ft MSL)
-const ORD_ELEVATION = 668;
+// SLC field elevation (ft MSL)
+const ORD_ELEVATION = 4227;
 // Glide slope angle (degrees)
 const GLIDE_SLOPE_DEG = 3;
 // Distance threshold to treat a waypoint as "reached" (NM)

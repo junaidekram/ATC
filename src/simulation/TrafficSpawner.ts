@@ -16,9 +16,9 @@ import type { SimLoop } from '../simulation/SimLoop';
  * (ATCSimulator) can add it to the map and log a comms message.
  */
 
-// ORD centre
-const ORD_LAT = 41.9802;
-const ORD_LON = -87.9090;
+// SLC centre
+const ORD_LAT = 40.7884;
+const ORD_LON = -111.9779;
 // Earth radius in NM
 const R_NM = 3440.065;
 
@@ -39,31 +39,31 @@ function pointOnBearing(bearingDeg: number, distNM: number): { lat: number; lon:
   return { lat: lat2 * 180 / Math.PI, lon: lon2 * 180 / Math.PI };
 }
 
-// The six STAR entry bearings (from ORD outward = where aircraft come FROM)
-const ENTRY_BEARINGS = [90, 135, 180, 225, 270, 340];
+// The six STAR entry bearings (from SLC outward = where aircraft come FROM)
+const ENTRY_BEARINGS = [80, 105, 190, 220, 285, 340];
 
 // Airlines and aircraft for random spawning
 const SPAWN_POOL = [
-  { airline: 'UAL', type: 'B737', destIcao: 'KORD', origCity: 'New York JFK', origIcao: 'KJFK'  },
-  { airline: 'AAL', type: 'A320', destIcao: 'KORD', origCity: 'Dallas, TX',    origIcao: 'KDFW'  },
-  { airline: 'DAL', type: 'A320', destIcao: 'KORD', origCity: 'Atlanta, GA',   origIcao: 'KATL'  },
-  { airline: 'SWA', type: 'B737', destIcao: 'KORD', origCity: 'Las Vegas, NV', origIcao: 'KLAS'  },
-  { airline: 'ASA', type: 'B737', destIcao: 'KORD', origCity: 'Seattle, WA',   origIcao: 'KSEA'  },
-  { airline: 'UAL', type: 'B787', destIcao: 'KORD', origCity: 'Los Angeles',   origIcao: 'KLAX'  },
-  { airline: 'AAL', type: 'B767', destIcao: 'KORD', origCity: 'Miami, FL',     origIcao: 'KMIA'  },
-  { airline: 'DAL', type: 'B767', destIcao: 'KORD', origCity: 'Detroit, MI',   origIcao: 'KDTW'  },
+  { airline: 'DAL', type: 'A320', destIcao: 'KSLC', origCity: 'Denver, CO',      origIcao: 'KDEN'  },
+  { airline: 'UAL', type: 'B737', destIcao: 'KSLC', origCity: 'Chicago, IL',     origIcao: 'KORD'  },
+  { airline: 'SWA', type: 'B737', destIcao: 'KSLC', origCity: 'Las Vegas, NV',   origIcao: 'KLAS'  },
+  { airline: 'ASA', type: 'B737', destIcao: 'KSLC', origCity: 'Seattle, WA',     origIcao: 'KSEA'  },
+  { airline: 'DAL', type: 'B757', destIcao: 'KSLC', origCity: 'Los Angeles, CA', origIcao: 'KLAX'  },
+  { airline: 'SWA', type: 'B737', destIcao: 'KSLC', origCity: 'Phoenix, AZ',     origIcao: 'KPHX'  },
+  { airline: 'UAL', type: 'B787', destIcao: 'KSLC', origCity: 'San Francisco',   origIcao: 'KSFO'  },
+  { airline: 'DAL', type: 'B737', destIcao: 'KSLC', origCity: 'Atlanta, GA',     origIcao: 'KATL'  },
 ];
 
 // Known ORD gates to use for departures — use real gate data from DataLoader
 // (resolved at spawn time via this.dataLoader.getGates())
 
 const DEPARTURE_AIRLINES = [
-  { airline: 'UAL', type: 'B737', origIcao: 'KORD', origCity: 'Chicago, IL', destIcao: 'KDEN', destCity: 'Denver, CO'       },
-  { airline: 'AAL', type: 'A320', origIcao: 'KORD', origCity: 'Chicago, IL', destIcao: 'KDFW', destCity: 'Dallas, TX'       },
-  { airline: 'SWA', type: 'B737', origIcao: 'KORD', origCity: 'Chicago, IL', destIcao: 'KLAS', destCity: 'Las Vegas, NV'    },
-  { airline: 'DAL', type: 'A350', origIcao: 'KORD', origCity: 'Chicago, IL', destIcao: 'KATL', destCity: 'Atlanta, GA'      },
-  { airline: 'UAL', type: 'B787', origIcao: 'KORD', origCity: 'Chicago, IL', destIcao: 'KLAX', destCity: 'Los Angeles, CA'  },
-  { airline: 'ASA', type: 'B737', origIcao: 'KORD', origCity: 'Chicago, IL', destIcao: 'KSEA', destCity: 'Seattle, WA'      },
+  { airline: 'DAL', type: 'A320', origIcao: 'KSLC', origCity: 'Salt Lake City, UT', destIcao: 'KDEN', destCity: 'Denver, CO'       },
+  { airline: 'SWA', type: 'B737', origIcao: 'KSLC', origCity: 'Salt Lake City, UT', destIcao: 'KLAS', destCity: 'Las Vegas, NV'    },
+  { airline: 'ASA', type: 'B737', origIcao: 'KSLC', origCity: 'Salt Lake City, UT', destIcao: 'KSEA', destCity: 'Seattle, WA'      },
+  { airline: 'DAL', type: 'B757', origIcao: 'KSLC', origCity: 'Salt Lake City, UT', destIcao: 'KLAX', destCity: 'Los Angeles, CA'  },
+  { airline: 'UAL', type: 'B787', origIcao: 'KSLC', origCity: 'Salt Lake City, UT', destIcao: 'KEWR', destCity: 'Newark, NJ'        },
+  { airline: 'SWA', type: 'B737', origIcao: 'KSLC', origCity: 'Salt Lake City, UT', destIcao: 'KPHX', destCity: 'Phoenix, AZ'      },
 ];
 
 // Squawk counter — incrementing from 4600

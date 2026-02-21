@@ -1042,3 +1042,209 @@ body {
   border-radius: 3px;
   background: rgba(0, 230, 118, .08);
 }
+
+/* ═══════════════════════════════════════════════════════════════
+   Taxiway Editor Panel
+   ═══════════════════════════════════════════════════════════════ */
+
+/* ── Floating panel ──────────────────────────────────────────── */
+.editor-panel {
+  position: absolute;
+  top: 60px;
+  right: 16px;
+  z-index: 1100;
+  width: 240px;
+  background: rgba(17, 20, 24, 0.96);
+  border: 1px solid #ffd600;
+  border-radius: 6px;
+  box-shadow: 0 4px 20px rgba(0,0,0,.7);
+  font-family: var(--mono);
+  font-size: .78rem;
+  color: var(--text);
+  display: none;           /* hidden by default */
+  flex-direction: column;
+  gap: 0;
+  overflow: hidden;
+  user-select: none;
+}
+.editor-panel--visible { display: flex; }
+
+/* ── Header ──────────────────────────────────────────────────── */
+.ep-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: .45rem .65rem;
+  background: rgba(255,214,0,.08);
+  border-bottom: 1px solid #ffd600;
+}
+.ep-title {
+  font-size: .75rem;
+  font-weight: 700;
+  letter-spacing: .1em;
+  color: #ffd600;
+}
+.ep-close-btn {
+  background: none;
+  border: none;
+  color: var(--text2);
+  font-size: .85rem;
+  cursor: pointer;
+  padding: 0 3px;
+  line-height: 1;
+}
+.ep-close-btn:hover { color: var(--red); }
+
+/* ── Sections ────────────────────────────────────────────────── */
+.ep-section {
+  padding: .5rem .65rem;
+  border-bottom: 1px solid var(--border);
+  display: flex;
+  flex-direction: column;
+  gap: .35rem;
+}
+
+.ep-section-title {
+  font-size: .65rem;
+  font-weight: 700;
+  letter-spacing: .1em;
+  color: var(--text2);
+  text-transform: uppercase;
+  margin-bottom: .1rem;
+}
+
+/* ── Form rows ───────────────────────────────────────────────── */
+.ep-row   { display: flex; align-items: center; gap: .4rem; }
+.ep-label { flex-shrink: 0; width: 52px; font-size: .72rem; color: var(--text2); }
+.ep-input {
+  flex: 1;
+  background: var(--bg3);
+  border: 1px solid var(--border);
+  border-radius: 3px;
+  color: var(--text);
+  font-family: var(--mono);
+  font-size: .75rem;
+  padding: .25rem .4rem;
+  outline: none;
+}
+.ep-input:focus   { border-color: #ffd600; }
+.ep-input--sm     { max-width: 70px; }
+.ep-select        { cursor: pointer; }
+
+/* ── Action buttons ──────────────────────────────────────────── */
+.ep-actions {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: .3rem;
+}
+.ep-btn {
+  background: var(--bg3);
+  border: 1px solid var(--border);
+  border-radius: 3px;
+  color: var(--text);
+  font-family: var(--mono);
+  font-size: .7rem;
+  padding: .3rem .4rem;
+  cursor: pointer;
+  transition: background .12s, border-color .12s;
+  white-space: nowrap;
+  text-align: center;
+}
+.ep-btn:hover              { background: var(--bg2); border-color: var(--text2); }
+.ep-btn--primary           { border-color: var(--green2); color: var(--green); }
+.ep-btn--primary:hover     { background: rgba(0,230,118,.1); }
+.ep-btn--primary.ep-btn--drawing {
+                             border-color: var(--green); background: rgba(0,230,118,.1);
+                             box-shadow: 0 0 5px rgba(0,230,118,.35); }
+.ep-btn--active            { border-color: #29b6f6; color: #29b6f6; }
+.ep-btn--warn              { border-color: var(--amber); color: var(--amber); }
+.ep-btn--warn:hover        { background: rgba(255,167,38,.1); }
+.ep-btn--danger            { border-color: var(--red); color: var(--red); }
+.ep-btn--danger:hover      { background: rgba(244,67,54,.1); }
+
+/* ── Taxiway list ─────────────────────────────────────────────── */
+.ep-taxiway-list {
+  max-height: 110px;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: .2rem;
+  margin-top: .15rem;
+}
+.ep-tw-row {
+  display: flex;
+  align-items: center;
+  gap: .4rem;
+  padding: .2rem .25rem;
+  background: var(--bg3);
+  border-radius: 3px;
+  border-left: 2px solid #ff9800;
+}
+.ep-tw-id    { color: #ff9800; font-weight: 700; font-size: .75rem; min-width: 28px; }
+.ep-tw-name  { flex: 1; color: var(--text2); font-size: .7rem; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.ep-tw-nodes { color: var(--text2); font-size: .65rem; flex-shrink: 0; }
+
+/* Edit/Delete buttons for each taxiway */
+.ep-tw-btn {
+  background: none;
+  border: none;
+  color: var(--text2);
+  cursor: pointer;
+  font-size: .75rem;
+  padding: 2px 4px;
+  line-height: 1;
+  opacity: 0.6;
+  transition: opacity .12s, color .12s;
+}
+.ep-tw-btn:hover { opacity: 1; }
+.ep-tw-btn--edit:hover   { color: #29b6f6; }
+.ep-tw-btn--delete:hover { color: var(--red); }
+
+/* ── Status bar ──────────────────────────────────────────────── */
+.ep-status {
+  padding: .35rem .65rem;
+  font-size: .7rem;
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+  min-height: 28px;
+  line-height: 1.3;
+}
+.ep-status.ok   { color: var(--green); }
+.ep-status.warn { color: var(--amber); }
+.ep-status.err  { color: var(--red); }
+
+/* ── Save button ─────────────────────────────────────────────── */
+.ep-save-btn {
+  background: rgba(255,214,0,.07);
+  border: none;
+  border-top: 1px solid #ffd600;
+  color: #ffd600;
+  font-family: var(--mono);
+  font-size: .78rem;
+  font-weight: 700;
+  letter-spacing: .05em;
+  padding: .5rem;
+  cursor: pointer;
+  transition: background .12s;
+  width: 100%;
+}
+.ep-save-btn:hover { background: rgba(255,214,0,.18); }
+
+/* ── Hint bar ────────────────────────────────────────────────── */
+.ep-hint {
+  padding: .3rem .65rem;
+  font-size: .63rem;
+  color: var(--text2);
+  line-height: 1.5;
+  opacity: .8;
+}
+
+/* ── Snap ring pulse animation ────────────────────────────────── */
+@keyframes snapPulse {
+  0%   { opacity: 1;   transform: scale(1); }
+  50%  { opacity: 0.5; transform: scale(1.3); }
+  100% { opacity: 1;   transform: scale(1); }
+}
+.editor-snap-ring {
+  animation: snapPulse 0.6s ease-in-out infinite;
+}

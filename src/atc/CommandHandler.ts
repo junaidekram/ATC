@@ -162,6 +162,31 @@ export class CommandHandler {
     let pushbackWaypoints: TaxiWaypoint[] | undefined;
 
     const gateId = ac.getState().gateId;
+
+    // ── Check for a custom gate backup path first ──────────────────────────
+    if (gateId) {
+      const backupPath = this.dataLoader.getGateBackupPath(gateId);
+      if (backupPath && backupPath.length >= 2) {
+        // Skip node 0 (the gate itself — that's the aircraft's current position)
+        const wps: TaxiWaypoint[] = backupPath.slice(1).map(p => ({
+          lat: p.lat, lon: p.lon, nodeId: p.nodeId,
+        }));
+        // Face heading: direction from second-to-last → last node unless overridden
+        const n = wps.length;
+        const fromPt = n >= 2 ? wps[n - 2] : { lat: backupPath[0].lat, lon: backupPath[0].lon };
+        const resolvedFaceHdg = faceHdg ?? this.bearingTo(fromPt, wps[n - 1]);
+        const startPos = { lat: backupPath[0].lat, lon: backupPath[0].lon };
+        const dist = Math.max(nmDist(startPos, wps[0]) * 1.1, 0.01);
+        ac.setPushback(resolvedFaceHdg, dist, wps);
+        ac.clearDepartureRequest();
+        this.applyAircraftSpecs(ac);
+        const dirText = cmd.faceDirection
+          ? `, facing ${cmd.faceDirection.toLowerCase()}`
+          : `, facing heading ${Math.round(resolvedFaceHdg)}`;
+        return { readback: `Push back approved${dirText}, ${ac.callsign}` };
+      }
+    }
+
     if (gateId) {
       const gate = this.dataLoader.getGates().find(g => g.id === gateId);
       if (gate?.taxiway_exit) {
@@ -497,7 +522,7 @@ export class CommandHandler {
 
   private handleGoAround(ac: Aircraft, cmd: Extract<ParsedCommand, { type: 'GO_AROUND' }>): CommandResult {
     ac.setPhase(FlightPhase.CLIMBING);
-    ac.setTargetAltitude((cmd.climbTo ?? 3000) + 668);
+    ac.setTargetAltitude((cmd.climbTo ?? 3000) + 4227);
     if (cmd.flyHeading !== undefined) {
       ac.setTargetHeading(cmd.flyHeading, 'auto');
     }

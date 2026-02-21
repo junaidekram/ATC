@@ -31,8 +31,8 @@ export interface Runway {
 
 /** Feet per degree of latitude (constant for ORD) */
 const FT_PER_DEG_LAT = 364_620;
-/** Feet per degree of longitude at ORD (~42 °N) */
-const FT_PER_DEG_LON = 364_620 * Math.cos(41.98 * Math.PI / 180); // ≈ 270 900
+/** Feet per degree of longitude at SLC (~41 °N) */
+const FT_PER_DEG_LON = 364_620 * Math.cos(40.79 * Math.PI / 180); // ≈ 276 000
 
 /**
  * Compute the CSS `rotate()` angle so that text drawn at the given runway

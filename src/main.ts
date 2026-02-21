@@ -2,6 +2,8 @@ import { MapController } from './map/MapController';
 import { RunwayLayer } from './map/RunwayLayer';
 import { TaxiwayLayer } from './map/TaxiwayLayer';
 import { GateLayer, type Gate } from './map/GateLayer';
+import { TaxiwayEditorLayer } from './map/TaxiwayEditorLayer';
+import { EditorPanel } from './ui/EditorPanel';
 import { AircraftLayer } from './map/AircraftLayer';
 import { TaxiRouteLayer } from './map/TaxiRouteLayer';
 import { RouteDrawer } from './map/RouteDrawer';
@@ -20,6 +22,13 @@ import { CommandParser } from './atc/CommandParser';
 import { CommandHandler } from './atc/CommandHandler';
 import { SeparationMonitor, type SeparationSeverity } from './atc/SeparationMonitor';
 import { TrafficSpawner } from './simulation/TrafficSpawner';
+
+/**
+ * Set to `false` once you have drawn and saved your taxiway network and no
+ * longer need the editor.  This hides the editor button and removes all
+ * editor code paths from the running application.
+ */
+const EDITOR_ENABLED = true;
 
 /**
  * ATCSimulator — main application class (Phase 3 revised)
@@ -49,6 +58,10 @@ class ATCSimulator {
   private taxiRouteLayer!: TaxiRouteLayer;
   private routeDrawer!: RouteDrawer;
   private pushbackDrawer!: PushbackDrawer;
+
+  // ── Taxiway editor (only active when EDITOR_ENABLED = true) ───────────────
+  private taxiwayEditor: TaxiwayEditorLayer | null = null;
+  private editorPanel:   EditorPanel        | null = null;
 
   private commandParser  = new CommandParser();
   private commandHandler!: CommandHandler;
@@ -128,8 +141,36 @@ class ATCSimulator {
     };
 
     this.runwayLayer.renderRunways(this.dataLoader.getRunways());
-    this.taxiwayLayer.renderTaxiways(this.dataLoader.getTaxiways());
     this.gateLayer.renderGates(this.dataLoader.getGates());
+
+    // Render taxiways on map (uses custom_taxiways.json if it was loaded by DataLoader)
+    this.taxiwayLayer.renderTaxiways(this.dataLoader.getTaxiways());
+
+    // ── Taxiway editor ───────────────────────────────────────────────────────
+    if (EDITOR_ENABLED) {
+      this.taxiwayEditor = new TaxiwayEditorLayer(
+        this.mapController.getMap(),
+        this.dataLoader.getGates(),
+      );
+      this.editorPanel = new EditorPanel(this.taxiwayEditor);
+
+      // Pre-populate editor with any already-saved custom taxiways so users
+      // can resume editing without losing previously drawn lines.
+      try {
+        const resp = await fetch('/data/custom_taxiways.json');
+        if (resp.ok) {
+          const saved = await resp.json() as {
+            taxiways?: Array<{
+              id: string; name: string; width_ft: number; subtype: string;
+              nodes: Array<{ id: string; lat: number; lon: number }>;
+            }>;
+          };
+          if (Array.isArray(saved.taxiways) && saved.taxiways.length > 0) {
+            this.taxiwayEditor.loadFromSaved(saved.taxiways);
+          }
+        }
+      } catch { /* no saved file — start fresh */ }
+    }
 
     // ── UI ──────────────────────────────────────────────────────────────────
     this.commsLog         = new CommsLog('comms-log');
@@ -144,7 +185,7 @@ class ATCSimulator {
                               (ac) => {
                                 this.aircraftLayer.renderAircraft(ac);
                                 this.commsLog.addSystemMessage(
-                                  `${ac.callsign}: KORD Approach, ${ac.callsign} with you, ` +
+                                  `${ac.callsign}: KSLC Approach, ${ac.callsign} with you, ` +
                                   `${Math.round(ac.altitude / 100) * 100} ft`
                                 );
                               });
@@ -158,7 +199,7 @@ class ATCSimulator {
     const totalAc = this.simLoop.getAircraft().length;
     const gateAc  = this.simLoop.getAircraft().filter(a => a.getState().gateId).length;
     const airAc   = totalAc - gateAc;
-    this.commsLog.addSystemMessage('KORD Tower & Ground online');
+    this.commsLog.addSystemMessage('KSLC Tower & Ground online');
     this.commsLog.addSystemMessage(
       `${totalAc} aircraft loaded — ${gateAc} at gates, ${airAc} airborne | ` +
       `${this.dataLoader.getRunways().length} runways`
@@ -199,7 +240,7 @@ class ATCSimulator {
       try {
         let position:    { lat: number; lon: number } | undefined;
         let heading    = fd.initial_heading ?? fd.current_heading ?? 360;
-        let altitude   = 668;   // ft MSL — default field elevation
+        let altitude   = 4227;   // ft MSL — default field elevation
         let speed      = 0;     // kts
         let phase      = FlightPhase.PARKED;
         const gateId   = fd.gate ?? null;
@@ -218,16 +259,16 @@ class ATCSimulator {
             position = fd.current_position ?? fd.initial_position;
           }
           phase    = FlightPhase.PARKED;
-          altitude = 668;
+          altitude = 4227;
           speed    = 0;
 
         } else if (AIRBORNE_MAP[jsonPhase]) {
           // ── Airborne / approach aircraft ────────────────────────────────
           position = fd.initial_position ?? fd.current_position;
-          altitude = fd.initial_altitude_ft ?? fd.current_altitude_ft ?? 668;
+          altitude = fd.initial_altitude_ft ?? fd.current_altitude_ft ?? 4227;
           speed    = fd.initial_speed_kts   ?? fd.current_speed_kts   ?? 0;
           phase    = AIRBORNE_MAP[jsonPhase];
-          // For approach, set target heading toward ORD so the aircraft
+          // For approach, set target heading toward SLC so the aircraft
           // actually tracks inbound even before the player issues clearance.
           if (phase === FlightPhase.APPROACH || phase === FlightPhase.CLIMBING) {
             // target heading is already set as initial_heading in JSON
@@ -238,7 +279,7 @@ class ATCSimulator {
           // Spawn as PARKED so player controls every movement.
           position = fd.current_position ?? fd.initial_position;
           phase    = FlightPhase.PARKED;
-          altitude = 668;
+          altitude = 4227;
           speed    = 0;
         }
 
@@ -255,7 +296,7 @@ class ATCSimulator {
           aircraftType:    fd.aircraft_type   ?? 'B737',
           originIcao:      fd.origin_icao     ?? '????',
           originCity:      fd.origin_city     ?? fd.origin_icao ?? '—',
-          destinationIcao: fd.destination_icao ?? 'KORD',
+          destinationIcao: fd.destination_icao ?? 'KSLC',
           destinationCity: fd.destination_city ?? fd.destination_icao ?? '—',
           position,
           altitude,
@@ -404,9 +445,9 @@ class ATCSimulator {
     }
   }
 
-  /** ORD centre (used for distance checks) */
-  private static readonly ORD_LAT = 41.9802;
-  private static readonly ORD_LON = -87.9090;
+  /** SLC centre (used for distance checks) */
+  private static readonly ORD_LAT = 40.7884;
+  private static readonly ORD_LON = -111.9779;
   /** Boundary in NM — aircraft beyond this are removed from the sim */
   private static readonly REMOVAL_DIST_NM = 55;
 
@@ -427,7 +468,7 @@ class ATCSimulator {
         if (dist > ATCSimulator.REMOVAL_DIST_NM) {
           removable.push(ac.callsign);
           this.commsLog.addSystemMessage(
-            `${ac.callsign} handed off — exiting KORD TRACON`
+            `${ac.callsign} handed off — exiting KSLC TRACON`
           );
           this.addScore(50); // reward for successful departure
         }
@@ -589,10 +630,37 @@ class ATCSimulator {
 
   private setupEventListeners(): void {
     // Map layer toggles
-    this.bindToggle('center-map',      () => this.mapController.centerOnORD());
+    this.bindToggle('center-map',      () => this.mapController.centerOnAirport());
     this.bindLayerBtn('toggle-taxiways', ['taxiways','taxiwayLabels']);
     this.bindLayerBtn('toggle-ils',      ['ils']);
     this.bindLayerBtn('toggle-gates',    ['gates']);
+
+    // Taxiway editor toggle (only wired when EDITOR_ENABLED = true)
+    if (EDITOR_ENABLED && this.taxiwayEditor && this.editorPanel) {
+      const editorBtn = document.getElementById('toggle-editor');
+      if (editorBtn) {
+        editorBtn.addEventListener('click', () => {
+          const panel = this.editorPanel!;
+          const editor = this.taxiwayEditor!;
+          const nowVisible = !panel.isShowing();
+          if (nowVisible) {
+            panel.show();
+            editor.enable();
+            this.setAircraftVisible(false);  // Hide aircraft during editing
+            editorBtn.classList.add('active');
+          } else {
+            panel.hide();
+            editor.disable();
+            this.setAircraftVisible(true);   // Restore aircraft visibility
+            editorBtn.classList.remove('active');
+          }
+        });
+      }
+    } else {
+      // Hide the button entirely when editor is disabled
+      const editorBtn = document.getElementById('toggle-editor');
+      if (editorBtn) editorBtn.style.display = 'none';
+    }
 
     // Sim speed buttons
     document.querySelectorAll<HTMLButtonElement>('[data-speed]').forEach(btn => {
@@ -776,6 +844,11 @@ class ATCSimulator {
     document.querySelectorAll('.tab-pane').forEach(p => p.classList.remove('active'));
     document.querySelector(`[data-tab="${tab}"]`)?.classList.add('active');
     document.getElementById(`tab-${tab}`)?.classList.add('active');
+  }
+
+  /** Hide or show aircraft and make them (un)clickable when editing taxiways */
+  private setAircraftVisible(visible: boolean): void {
+    this.aircraftLayer.setVisible(visible);
   }
 
   /** Add a method to clear the aircraft info panel */

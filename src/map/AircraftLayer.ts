@@ -235,4 +235,25 @@ export class AircraftLayer {
       new CustomEvent('aircraft-selected', { detail: aircraft.getState() })
     );
   }
+
+  // ── Visibility control ─────────────────────────────────────────────────────
+
+  /**
+   * Set visibility and interactivity of all aircraft.
+   * Used when editor is active to hide aircraft so they don't block map clicks.
+   */
+  setVisible(visible: boolean): void {
+    for (const { marker } of this.aircraftMarkers.values()) {
+      const el = marker.getElement();
+      if (el) {
+        if (visible) {
+          el.style.pointerEvents = 'auto';
+          el.style.opacity = '1';
+        } else {
+          el.style.pointerEvents = 'none';
+          el.style.opacity = '0.2';
+        }
+      }
+    }
+  }
 }

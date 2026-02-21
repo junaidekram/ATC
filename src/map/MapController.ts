@@ -3,8 +3,8 @@ import 'leaflet/dist/leaflet.css';
 
 /** Zoom levels at which each layer becomes visible */
 const ZOOM_THRESHOLDS = {
-  gates:         14,   // gate markers & labels
-  taxiwayLabels: 13,   // taxiway letter badges
+  gates:         12,   // gate markers & labels
+  taxiwayLabels: 99,   // taxiway labels disabled (taxiways not rendered)
   ils:           11,   // ILS cones
 } as const;
 
@@ -25,7 +25,7 @@ type LayerName = 'runways' | 'taxiways' | 'taxiwayLabels' | 'ils' | 'gates' | 'a
  */
 export class MapController {
   private map: L.Map;
-  private readonly ORD_CENTER: L.LatLngTuple = [41.9802, -87.9090];
+  private readonly SLC_CENTER: L.LatLngTuple = [40.7884, -111.9779];
   private layers: Partial<Record<LayerName, L.LayerGroup>> = {};
 
   /**
@@ -38,7 +38,7 @@ export class MapController {
 
   constructor(containerId: string) {
     this.map = L.map(containerId, {
-      center: this.ORD_CENTER,
+      center: this.SLC_CENTER,
       zoom: 14,
       minZoom: 9,
       maxZoom: 18,
@@ -53,9 +53,10 @@ export class MapController {
     }).addTo(this.map);
 
     // Initialise layer groups (order matters — lower first = rendered under)
+    // taxiways and taxiwayLabels exist for routing but are NOT added to map
     this.layers.ils           = L.layerGroup().addTo(this.map);
-    this.layers.taxiways      = L.layerGroup().addTo(this.map);
-    this.layers.taxiwayLabels = L.layerGroup().addTo(this.map);
+    this.layers.taxiways      = L.layerGroup();   // routing only, not on map
+    this.layers.taxiwayLabels = L.layerGroup();   // disabled
     this.layers.runways       = L.layerGroup().addTo(this.map);
     this.layers.gates         = L.layerGroup().addTo(this.map);
     this.layers.taxiRoutes    = L.layerGroup().addTo(this.map);
@@ -68,7 +69,7 @@ export class MapController {
     this.map.on('zoomend', () => this.updateZoomVisibility());
     this.updateZoomVisibility();   // apply on init
 
-    console.log('Map initialised at ORD coordinates:', this.ORD_CENTER);
+    console.log('Map initialised at SLC coordinates:', this.SLC_CENTER);
   }
 
   /**
@@ -115,8 +116,8 @@ export class MapController {
     return this.layers[name];
   }
 
-  centerOnORD(): void {
-    this.map.setView(this.ORD_CENTER, 14);
+  centerOnAirport(): void {
+    this.map.setView(this.SLC_CENTER, 14);
   }
 
   /**

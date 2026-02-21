@@ -35,7 +35,7 @@ export class AircraftInfoPanel {
   displayAircraft(state: AircraftState): void {
     this.currentCallsign = state.callsign;
     const display = getAircraftDisplay(state.aircraftType);
-    const altStr  = state.altitude > 668 ? `${Math.round(state.altitude).toLocaleString()} ft MSL` : 'Ground';
+    const altStr  = state.altitude > 4400 ? `${Math.round(state.altitude).toLocaleString()} ft MSL` : 'Ground';
     const spdStr  = state.speed > 0 ? `${Math.round(state.speed)} kts` : 'Stopped';
     const hdgStr  = `${Math.round(state.heading).toString().padStart(3, '0')}°`;
 

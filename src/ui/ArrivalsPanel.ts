@@ -14,8 +14,8 @@ import { FlightPhase } from '../aircraft/FlightPhase';
  *   CLEAR LAND  — fires the CLEARED_LAND command
  */
 
-const ORD_LAT = 41.9802;
-const ORD_LON = -87.9090;
+const ORD_LAT = 40.7884;
+const ORD_LON = -111.9779;
 
 const ARRIVAL_PHASES = new Set<FlightPhase>([
   FlightPhase.APPROACH,
@@ -88,7 +88,7 @@ export class ArrivalsPanel {
         <div class="arr-strip-data">
           <span class="arr-data-item">
             <span class="arr-data-lbl">ALT</span>
-            <span class="arr-data-val">${altFt > 668 ? `${altFt.toLocaleString()} ft` : 'GND'}</span>
+            <span class="arr-data-val">${altFt > 4400 ? `${altFt.toLocaleString()} ft` : 'GND'}</span>
           </span>
           <span class="arr-data-item">
             <span class="arr-data-lbl">SPD</span>
