@@ -4,6 +4,8 @@ import fs from 'fs';
 import type { Connect } from 'vite';
 
 export default defineConfig({
+  // Set base path for GitHub Pages deployment
+  base: process.env.GITHUB_ACTIONS ? '/ATC/' : '/',
   resolve: {
     alias: {
       '@': resolve(__dirname, './src'),
