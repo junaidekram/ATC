@@ -261,7 +261,7 @@ export class DataLoader {
       // airport base file so gate positions / ids are never lost.
       let taxiwaysData: TaxiwayFileShape = airportTaxiwayData;
       try {
-        const customResp = await fetch('/data/custom_taxiways.json');
+        const customResp = await fetch(this.dataUrl('/data/custom_taxiways.json'));
         if (customResp.ok) {
           const custom = await customResp.json() as TaxiwayFileShape;
           if (Array.isArray(custom.taxiways)) {
@@ -443,11 +443,16 @@ export class DataLoader {
     }
   }
 
+  /** Resolve a data file path relative to the app's base URL. */
+  private dataUrl(path: string): string {
+    return (import.meta.env.BASE_URL ?? '/') + path.replace(/^\//, '');
+  }
+
   /**
    * Fetch and parse JSON file
    */
   private async fetchJSON<T>(url: string): Promise<T> {
-    const response = await fetch(url);
+    const response = await fetch(this.dataUrl(url));
     if (!response.ok) {
       throw new Error(`Failed to fetch ${url}: ${response.statusText}`);
     }

@@ -157,7 +157,7 @@ class ATCSimulator {
       // Pre-populate editor with any already-saved custom taxiways so users
       // can resume editing without losing previously drawn lines.
       try {
-        const resp = await fetch('/data/custom_taxiways.json');
+        const resp = await fetch(`${import.meta.env.BASE_URL ?? '/'}data/custom_taxiways.json`);
         if (resp.ok) {
           const saved = await resp.json() as {
             taxiways?: Array<{
