@@ -517,7 +517,6 @@ class ATCSimulator {
 
   /** Update the ATIS display overlay on the map */
   private updateAtisDisplay(): void {
-    const runways = this.dataLoader.getRunways();
     const aircraft = this.simLoop.getAircraft();
     // Find runways in use for departure (TAKEOFF/LINEUP) and arrival (LANDING/FINAL)
     const departingOn = new Set<string>();
