@@ -219,9 +219,7 @@ export class EditorPanel {
 
   private _onDeleteTaxiway(index: number, id: string): void {
     if (confirm(`Delete taxiway "${id}"?`)) {
-      const all = this.editor.getTaxiways();
-      all.splice(index, 1);
-      this.editor.onStateChange?.(all, this.editor.getActiveTaxiway());
+      this.editor.deleteTaxiway(index);
     }
   }
 

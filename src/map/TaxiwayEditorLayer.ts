@@ -373,9 +373,26 @@ export class TaxiwayEditorLayer {
   }
 
   /**
+   * Delete a finalized taxiway by index and redraw.
+   */
+  deleteTaxiway(index: number): void {
+    if (index < 0 || index >= this.allTaxiways.length) return;
+    const id = this.allTaxiways[index].id;
+    this.allTaxiways.splice(index, 1);
+    this._redrawAllFinalized();
+    this._notify();
+    this.onStatus?.(`Taxiway "${id}" deleted (${this.allTaxiways.length} remaining)`, 'warn');
+  }
+
+  /**
    * Serialize and POST to the Vite dev-server save endpoint.
    */
   async saveToFile(): Promise<void> {
+    // Auto-finalize any in-progress line that has enough nodes
+    if (this.activeTaxiway && this.activeTaxiway.nodes.length >= 2) {
+      this._finalizeActive();
+      this._notify();
+    }
     if (this.allTaxiways.length === 0) {
       this.onStatus?.('Nothing to save — draw some taxiways first', 'warn');
       return;
@@ -461,8 +478,15 @@ export class TaxiwayEditorLayer {
       }
     }
 
-    // ── If not editing, ignore clicks (must use panel to start new line) ────
+    // ── If not editing, check if clicking near a finalized taxiway ────────
+    // Polylines have direct click handlers, but this fallback handles clicks
+    // that land slightly outside the rendered line geometry.
     if (!this.activeTaxiway) {
+      const polylineIdx = this._findPolylineNearLatlng(e.latlng);
+      if (polylineIdx !== null) {
+        this.startEditingLine(polylineIdx);
+        return;
+      }
       this.onStatus?.('Start a new line first (use the panel)', 'warn');
       return;
     }
@@ -714,7 +738,14 @@ export class TaxiwayEditorLayer {
         { permanent: false },
       )
       .addTo(this.finalizedLayer);
-    
+
+    polyline.on('click', (e: L.LeafletMouseEvent) => {
+      L.DomEvent.stopPropagation(e);
+      // Look up current index by id so stale closures after insertions/deletions are handled
+      const currentIdx = this.allTaxiways.findIndex(t => t.id === tw.id);
+      if (currentIdx !== -1) this.startEditingLine(currentIdx);
+    });
+
     // Store for click detection
     this.finalizedPolylines.set(tw.id, polyline);
   }
