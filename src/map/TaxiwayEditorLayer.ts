@@ -383,11 +383,50 @@ export class TaxiwayEditorLayer {
     this.onStatus?.('Saving…');
     try {
       const payload = this.serialize();
+      
+      // Validate payload before sending to catch NaN/Infinity issues early
+      const jsonStr = JSON.stringify(payload, (key, value) => {
+        // Handle NaN and Infinity values
+        if (typeof value === 'number') {
+          if (!isFinite(value)) {
+            console.warn(`Invalid numeric value in payload at ${key}: ${value}, converting to 0`);
+            return 0;
+          }
+        }
+        return value;
+      }, 2);
+      
+      // Validate JSON can be parsed back
+      try {
+        JSON.parse(jsonStr);
+      } catch (parseErr) {
+        throw new Error(`Payload serialization failed: ${(parseErr as Error).message}`);
+      }
+      
       const resp = await fetch('/api/save-taxiways', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(payload, null, 2),
+        body: jsonStr,
       });
+      
+      if (!resp.ok) {
+        const contentType = resp.headers.get('content-type');
+        let errorMsg = `HTTP ${resp.status}`;
+        try {
+          if (contentType?.includes('application/json')) {
+            const json = await resp.json() as { error?: string };
+            errorMsg = json.error || errorMsg;
+          } else {
+            const text = await resp.text();
+            errorMsg = text || errorMsg;
+          }
+        } catch {
+          // Fallback to status text if response isn't parseable
+          errorMsg = resp.statusText || errorMsg;
+        }
+        throw new Error(errorMsg);
+      }
+      
       const json = await resp.json() as { ok?: boolean; error?: string };
       if (json.ok) {
         this.onStatus?.(
@@ -395,7 +434,7 @@ export class TaxiwayEditorLayer {
           'ok',
         );
       } else {
-        this.onStatus?.(`Save error: ${json.error ?? 'unknown'}`, 'err');
+        throw new Error(json.error ?? 'Unknown error');
       }
     } catch (e) {
       this.onStatus?.(`Save failed: ${(e as Error).message}`, 'err');
