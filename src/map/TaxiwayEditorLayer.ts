@@ -420,38 +420,47 @@ export class TaxiwayEditorLayer {
         throw new Error(`Payload serialization failed: ${(parseErr as Error).message}`);
       }
       
-      const resp = await fetch('/api/save-taxiways', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: jsonStr,
-      });
-      
-      if (!resp.ok) {
-        const contentType = resp.headers.get('content-type');
-        let errorMsg = `HTTP ${resp.status}`;
-        try {
-          if (contentType?.includes('application/json')) {
-            const json = await resp.json() as { error?: string };
-            errorMsg = json.error || errorMsg;
-          } else {
-            const text = await resp.text();
-            errorMsg = text || errorMsg;
+      // Try to save via backend API. Use the current page origin so
+      // in production the same host (or proxy) will be targeted.
+      let savedViaAPI = false;
+      try {
+        const apiUrl = `${window.location.origin}/api/save-taxiways`;
+        const resp = await fetch(apiUrl, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: jsonStr,
+        });
+        
+        if (resp.ok) {
+          const json = await resp.json() as { ok?: boolean; error?: string };
+          if (json.ok) {
+            savedViaAPI = true;
+            this.onStatus?.(
+              `✔ Saved ${payload.taxiways.length} taxiways, ${payload.graph_edges.length} edges → data/custom_taxiways.json`,
+              'ok',
+            );
           }
-        } catch {
-          // Fallback to status text if response isn't parseable
-          errorMsg = resp.statusText || errorMsg;
         }
-        throw new Error(errorMsg);
+      } catch (e) {
+        console.warn('[Taxiway Save] Backend not available, falling back to download:', e);
       }
       
-      const json = await resp.json() as { ok?: boolean; error?: string };
-      if (json.ok) {
+      // If API not available, offer to download the file locally
+      if (!savedViaAPI) {
+        const blob = new Blob([jsonStr], { type: 'application/json' });
+        const url = URL.createObjectURL(blob);
+        const a = document.createElement('a');
+        a.href = url;
+        a.download = 'custom_taxiways.json';
+        document.body.appendChild(a);
+        a.click();
+        document.body.removeChild(a);
+        URL.revokeObjectURL(url);
+        
         this.onStatus?.(
-          `✔ Saved ${payload.taxiways.length} taxiways, ${payload.graph_edges.length} edges → data/custom_taxiways.json. Reload to apply.`,
-          'ok',
+          `⚠ Backend unavailable. Downloaded custom_taxiways.json — replace data/custom_taxiways.json and reload. (To use API: npm run server)`,
+          'warn',
         );
-      } else {
-        throw new Error(json.error ?? 'Unknown error');
       }
     } catch (e) {
       this.onStatus?.(`Save failed: ${(e as Error).message}`, 'err');
