@@ -34,7 +34,7 @@ export default defineConfig({
             req.on('data', (chunk: Buffer) => { body += chunk.toString(); });
             req.on('end', () => {
               try {
-                const parsed = JSON.parse(body); // validate
+                JSON.parse(body); // validate JSON is well-formed
                 console.log(`[Taxiway Save] Valid JSON payload received, ${body.length} bytes`);
               } catch (err) {
                 console.error(`[Taxiway Save] JSON parse error:`, err);
