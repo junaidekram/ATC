@@ -1,0 +1,1337 @@
+{
+  "metadata": {
+    "airport": "KSLC",
+    "description": "Salt Lake City International Airport \u2014 taxiways, gates, and parking",
+    "coordinate_system": "WGS84 decimal degrees",
+    "source": "OpenStreetMap (airnav.com source) + FAA AIP \u2014 real gate and taxiway coordinates",
+    "last_updated": "2026-02",
+    "note": "Simplified taxiway network for simulation purposes."
+  },
+  "taxiways": [
+    {
+      "id": "A",
+      "name": "Taxiway Alpha",
+      "width_ft": 75,
+      "subtype": "taxiway",
+      "nodes": [
+        {
+          "id": "TA001",
+          "lat": 40.803,
+          "lon": -111.99
+        },
+        {
+          "id": "TA002",
+          "lat": 40.795,
+          "lon": -111.99
+        },
+        {
+          "id": "TA003",
+          "lat": 40.787,
+          "lon": -111.99
+        },
+        {
+          "id": "TA004",
+          "lat": 40.782,
+          "lon": -111.99
+        },
+        {
+          "id": "TA005",
+          "lat": 40.775,
+          "lon": -111.99
+        }
+      ]
+    },
+    {
+      "id": "B",
+      "name": "Taxiway Bravo",
+      "width_ft": 75,
+      "subtype": "taxiway",
+      "nodes": [
+        {
+          "id": "TB001",
+          "lat": 40.795,
+          "lon": -111.996
+        },
+        {
+          "id": "TB002",
+          "lat": 40.795,
+          "lon": -111.99
+        },
+        {
+          "id": "TB003",
+          "lat": 40.795,
+          "lon": -111.984
+        },
+        {
+          "id": "TB004",
+          "lat": 40.795,
+          "lon": -111.975
+        },
+        {
+          "id": "TB005",
+          "lat": 40.795,
+          "lon": -111.97
+        },
+        {
+          "id": "TB006",
+          "lat": 40.795,
+          "lon": -111.965
+        }
+      ]
+    },
+    {
+      "id": "C",
+      "name": "Taxiway Charlie",
+      "width_ft": 75,
+      "subtype": "taxiway",
+      "nodes": [
+        {
+          "id": "TC001",
+          "lat": 40.782,
+          "lon": -111.996
+        },
+        {
+          "id": "TC002",
+          "lat": 40.782,
+          "lon": -111.99
+        },
+        {
+          "id": "TC003",
+          "lat": 40.782,
+          "lon": -111.983
+        },
+        {
+          "id": "TC004",
+          "lat": 40.782,
+          "lon": -111.975
+        },
+        {
+          "id": "TC005",
+          "lat": 40.782,
+          "lon": -111.97
+        },
+        {
+          "id": "TC006",
+          "lat": 40.782,
+          "lon": -111.965
+        }
+      ]
+    },
+    {
+      "id": "D",
+      "name": "Taxiway Delta",
+      "width_ft": 75,
+      "subtype": "taxiway",
+      "nodes": [
+        {
+          "id": "TD001",
+          "lat": 40.8,
+          "lon": -111.975
+        },
+        {
+          "id": "TD002",
+          "lat": 40.795,
+          "lon": -111.975
+        },
+        {
+          "id": "TD003",
+          "lat": 40.79,
+          "lon": -111.975
+        },
+        {
+          "id": "TD004",
+          "lat": 40.782,
+          "lon": -111.975
+        },
+        {
+          "id": "TD005",
+          "lat": 40.775,
+          "lon": -111.975
+        }
+      ]
+    },
+    {
+      "id": "E",
+      "name": "Taxiway Echo",
+      "width_ft": 50,
+      "subtype": "taxilane",
+      "nodes": [
+        {
+          "id": "TE001",
+          "lat": 40.783,
+          "lon": -111.974
+        },
+        {
+          "id": "TE002",
+          "lat": 40.783,
+          "lon": -111.972
+        },
+        {
+          "id": "TE003",
+          "lat": 40.783,
+          "lon": -111.97
+        },
+        {
+          "id": "TE004",
+          "lat": 40.783,
+          "lon": -111.968
+        },
+        {
+          "id": "TE005",
+          "lat": 40.783,
+          "lon": -111.966
+        },
+        {
+          "id": "TE006",
+          "lat": 40.783,
+          "lon": -111.964
+        }
+      ]
+    },
+    {
+      "id": "F",
+      "name": "Taxiway Foxtrot",
+      "width_ft": 50,
+      "subtype": "taxilane",
+      "nodes": [
+        {
+          "id": "TF001",
+          "lat": 40.791,
+          "lon": -111.974
+        },
+        {
+          "id": "TF002",
+          "lat": 40.791,
+          "lon": -111.972
+        },
+        {
+          "id": "TF003",
+          "lat": 40.791,
+          "lon": -111.97
+        },
+        {
+          "id": "TF004",
+          "lat": 40.791,
+          "lon": -111.968
+        },
+        {
+          "id": "TF005",
+          "lat": 40.791,
+          "lon": -111.966
+        },
+        {
+          "id": "TF006",
+          "lat": 40.791,
+          "lon": -111.964
+        }
+      ]
+    }
+  ],
+  "graph_edges": [
+    {
+      "from": "TA001",
+      "to": "TA002",
+      "dist_ft": 2917
+    },
+    {
+      "from": "TA002",
+      "to": "TA003",
+      "dist_ft": 2917
+    },
+    {
+      "from": "TA003",
+      "to": "TA004",
+      "dist_ft": 1823
+    },
+    {
+      "from": "TA004",
+      "to": "TA005",
+      "dist_ft": 2552
+    },
+    {
+      "from": "TB001",
+      "to": "TB002",
+      "dist_ft": 1656
+    },
+    {
+      "from": "TB002",
+      "to": "TB003",
+      "dist_ft": 1656
+    },
+    {
+      "from": "TB003",
+      "to": "TB004",
+      "dist_ft": 2484
+    },
+    {
+      "from": "TB004",
+      "to": "TB005",
+      "dist_ft": 1380
+    },
+    {
+      "from": "TB005",
+      "to": "TB006",
+      "dist_ft": 1380
+    },
+    {
+      "from": "TC001",
+      "to": "TC002",
+      "dist_ft": 1656
+    },
+    {
+      "from": "TC002",
+      "to": "TC003",
+      "dist_ft": 1932
+    },
+    {
+      "from": "TC003",
+      "to": "TC004",
+      "dist_ft": 2208
+    },
+    {
+      "from": "TC004",
+      "to": "TC005",
+      "dist_ft": 1380
+    },
+    {
+      "from": "TC005",
+      "to": "TC006",
+      "dist_ft": 1380
+    },
+    {
+      "from": "TD001",
+      "to": "TD002",
+      "dist_ft": 1823
+    },
+    {
+      "from": "TD002",
+      "to": "TD003",
+      "dist_ft": 1823
+    },
+    {
+      "from": "TD003",
+      "to": "TD004",
+      "dist_ft": 2917
+    },
+    {
+      "from": "TD004",
+      "to": "TD005",
+      "dist_ft": 2552
+    },
+    {
+      "from": "TE001",
+      "to": "TE002",
+      "dist_ft": 552
+    },
+    {
+      "from": "TE002",
+      "to": "TE003",
+      "dist_ft": 552
+    },
+    {
+      "from": "TE003",
+      "to": "TE004",
+      "dist_ft": 552
+    },
+    {
+      "from": "TE004",
+      "to": "TE005",
+      "dist_ft": 552
+    },
+    {
+      "from": "TE005",
+      "to": "TE006",
+      "dist_ft": 552
+    },
+    {
+      "from": "TF001",
+      "to": "TF002",
+      "dist_ft": 552
+    },
+    {
+      "from": "TF002",
+      "to": "TF003",
+      "dist_ft": 552
+    },
+    {
+      "from": "TF003",
+      "to": "TF004",
+      "dist_ft": 552
+    },
+    {
+      "from": "TF004",
+      "to": "TF005",
+      "dist_ft": 552
+    },
+    {
+      "from": "TF005",
+      "to": "TF006",
+      "dist_ft": 552
+    },
+    {
+      "from": "TA002",
+      "to": "TB002",
+      "dist_ft": 10
+    },
+    {
+      "from": "TA004",
+      "to": "TC002",
+      "dist_ft": 10
+    },
+    {
+      "from": "TB004",
+      "to": "TD002",
+      "dist_ft": 10
+    },
+    {
+      "from": "TC004",
+      "to": "TD004",
+      "dist_ft": 10
+    },
+    {
+      "from": "TD003",
+      "to": "TF001",
+      "dist_ft": 457
+    },
+    {
+      "from": "TD004",
+      "to": "TE001",
+      "dist_ft": 457
+    },
+    {
+      "from": "TC005",
+      "to": "TE001",
+      "dist_ft": 552
+    },
+    {
+      "from": "TB005",
+      "to": "TF001",
+      "dist_ft": 552
+    },
+    {
+      "from": "TC006",
+      "to": "TE006",
+      "dist_ft": 457
+    },
+    {
+      "from": "TB006",
+      "to": "TF006",
+      "dist_ft": 1484
+    }
+  ],
+  "gates": [
+    {
+      "id": "A1",
+      "terminal": "A",
+      "lat": 40.7853757,
+      "lon": -111.9919705,
+      "type": "narrowbody",
+      "taxiway_exit": "TA",
+      "nose_heading": 180,
+      "parking_lat": 40.7855374,
+      "parking_lon": -111.9919705
+    },
+    {
+      "id": "A2",
+      "terminal": "A",
+      "lat": 40.7852116,
+      "lon": -111.9921999,
+      "type": "narrowbody",
+      "taxiway_exit": "TA",
+      "nose_heading": 0,
+      "parking_lat": 40.7850499,
+      "parking_lon": -111.9921999
+    },
+    {
+      "id": "A3",
+      "terminal": "A",
+      "lat": 40.7853665,
+      "lon": -111.9917043,
+      "type": "narrowbody",
+      "taxiway_exit": "TA",
+      "nose_heading": 180,
+      "parking_lat": 40.7855282,
+      "parking_lon": -111.9917043
+    },
+    {
+      "id": "A4",
+      "terminal": "A",
+      "lat": 40.7850545,
+      "lon": -111.9920837,
+      "type": "narrowbody",
+      "taxiway_exit": "TA",
+      "nose_heading": 0,
+      "parking_lat": 40.7848928,
+      "parking_lon": -111.9920837
+    },
+    {
+      "id": "A5",
+      "terminal": "A",
+      "lat": 40.7854,
+      "lon": -111.9911968,
+      "type": "narrowbody",
+      "taxiway_exit": "TA",
+      "nose_heading": 180,
+      "parking_lat": 40.7855617,
+      "parking_lon": -111.9911968
+    },
+    {
+      "id": "A6",
+      "terminal": "A",
+      "lat": 40.7851083,
+      "lon": -111.9916929,
+      "type": "narrowbody",
+      "taxiway_exit": "TA",
+      "nose_heading": 0,
+      "parking_lat": 40.7849466,
+      "parking_lon": -111.9916929
+    },
+    {
+      "id": "A7",
+      "terminal": "A",
+      "lat": 40.785426,
+      "lon": -111.9908682,
+      "type": "narrowbody",
+      "taxiway_exit": "TA",
+      "nose_heading": 180,
+      "parking_lat": 40.7855877,
+      "parking_lon": -111.9908682
+    },
+    {
+      "id": "A8",
+      "terminal": "A",
+      "lat": 40.7851306,
+      "lon": -111.9911888,
+      "type": "narrowbody",
+      "taxiway_exit": "TA",
+      "nose_heading": 0,
+      "parking_lat": 40.7849689,
+      "parking_lon": -111.9911888
+    },
+    {
+      "id": "A9",
+      "terminal": "A",
+      "lat": 40.7854553,
+      "lon": -111.9903598,
+      "type": "narrowbody",
+      "taxiway_exit": "TA",
+      "nose_heading": 180,
+      "parking_lat": 40.785617,
+      "parking_lon": -111.9903598
+    },
+    {
+      "id": "A10",
+      "terminal": "A",
+      "lat": 40.7851571,
+      "lon": -111.990806,
+      "type": "narrowbody",
+      "taxiway_exit": "TA",
+      "nose_heading": 0,
+      "parking_lat": 40.7849954,
+      "parking_lon": -111.990806
+    },
+    {
+      "id": "A11",
+      "terminal": "A",
+      "lat": 40.7854914,
+      "lon": -111.9898167,
+      "type": "narrowbody",
+      "taxiway_exit": "TA",
+      "nose_heading": 180,
+      "parking_lat": 40.7856531,
+      "parking_lon": -111.9898167
+    },
+    {
+      "id": "A12",
+      "terminal": "A",
+      "lat": 40.785184,
+      "lon": -111.9903339,
+      "type": "narrowbody",
+      "taxiway_exit": "TA",
+      "nose_heading": 0,
+      "parking_lat": 40.7850223,
+      "parking_lon": -111.9903339
+    },
+    {
+      "id": "A13",
+      "terminal": "A",
+      "lat": 40.7855199,
+      "lon": -111.9893515,
+      "type": "narrowbody",
+      "taxiway_exit": "TA",
+      "nose_heading": 180,
+      "parking_lat": 40.7856816,
+      "parking_lon": -111.9893515
+    },
+    {
+      "id": "A14",
+      "terminal": "A",
+      "lat": 40.7852378,
+      "lon": -111.9895858,
+      "type": "narrowbody",
+      "taxiway_exit": "TA",
+      "nose_heading": 0,
+      "parking_lat": 40.7850761,
+      "parking_lon": -111.9895858
+    },
+    {
+      "id": "A15",
+      "terminal": "A",
+      "lat": 40.785666,
+      "lon": -111.988333,
+      "type": "narrowbody",
+      "taxiway_exit": "TA",
+      "nose_heading": 180,
+      "parking_lat": 40.7858277,
+      "parking_lon": -111.988333
+    },
+    {
+      "id": "A16",
+      "terminal": "A",
+      "lat": 40.7852691,
+      "lon": -111.9891197,
+      "type": "narrowbody",
+      "taxiway_exit": "TA",
+      "nose_heading": 0,
+      "parking_lat": 40.7851074,
+      "parking_lon": -111.9891197
+    },
+    {
+      "id": "A17",
+      "terminal": "A",
+      "lat": 40.7856926,
+      "lon": -111.9879266,
+      "type": "narrowbody",
+      "taxiway_exit": "TA",
+      "nose_heading": 180,
+      "parking_lat": 40.7858543,
+      "parking_lon": -111.9879266
+    },
+    {
+      "id": "A18",
+      "terminal": "A",
+      "lat": 40.7852803,
+      "lon": -111.9885515,
+      "type": "narrowbody",
+      "taxiway_exit": "TA",
+      "nose_heading": 0,
+      "parking_lat": 40.7851186,
+      "parking_lon": -111.9885515
+    },
+    {
+      "id": "A19",
+      "terminal": "A",
+      "lat": 40.7857188,
+      "lon": -111.9875261,
+      "type": "narrowbody",
+      "taxiway_exit": "TA",
+      "nose_heading": 180,
+      "parking_lat": 40.7858805,
+      "parking_lon": -111.9875261
+    },
+    {
+      "id": "A20",
+      "terminal": "A",
+      "lat": 40.7853129,
+      "lon": -111.9880522,
+      "type": "narrowbody",
+      "taxiway_exit": "TA",
+      "nose_heading": 0,
+      "parking_lat": 40.7851512,
+      "parking_lon": -111.9880522
+    },
+    {
+      "id": "A21",
+      "terminal": "A",
+      "lat": 40.7857761,
+      "lon": -111.9866609,
+      "type": "narrowbody",
+      "taxiway_exit": "TA",
+      "nose_heading": 180,
+      "parking_lat": 40.7859378,
+      "parking_lon": -111.9866609
+    },
+    {
+      "id": "A22",
+      "terminal": "A",
+      "lat": 40.7853661,
+      "lon": -111.9873046,
+      "type": "narrowbody",
+      "taxiway_exit": "TA",
+      "nose_heading": 0,
+      "parking_lat": 40.7852044,
+      "parking_lon": -111.9873046
+    },
+    {
+      "id": "A23",
+      "terminal": "A",
+      "lat": 40.7857986,
+      "lon": -111.986317,
+      "type": "narrowbody",
+      "taxiway_exit": "TA",
+      "nose_heading": 180,
+      "parking_lat": 40.7859603,
+      "parking_lon": -111.986317
+    },
+    {
+      "id": "A24",
+      "terminal": "A",
+      "lat": 40.7854012,
+      "lon": -111.9868026,
+      "type": "narrowbody",
+      "taxiway_exit": "TA",
+      "nose_heading": 0,
+      "parking_lat": 40.7852395,
+      "parking_lon": -111.9868026
+    },
+    {
+      "id": "A25",
+      "terminal": "A",
+      "lat": 40.7858274,
+      "lon": -111.9858772,
+      "type": "narrowbody",
+      "taxiway_exit": "TA",
+      "nose_heading": 180,
+      "parking_lat": 40.7859891,
+      "parking_lon": -111.9858772
+    },
+    {
+      "id": "A26",
+      "terminal": "A",
+      "lat": 40.7856015,
+      "lon": -111.9835601,
+      "type": "narrowbody",
+      "taxiway_exit": "TA",
+      "nose_heading": 0,
+      "parking_lat": 40.7854398,
+      "parking_lon": -111.9835601
+    },
+    {
+      "id": "A27",
+      "terminal": "A",
+      "lat": 40.7859071,
+      "lon": -111.9840687,
+      "type": "narrowbody",
+      "taxiway_exit": "TA",
+      "nose_heading": 180,
+      "parking_lat": 40.7860688,
+      "parking_lon": -111.9840687
+    },
+    {
+      "id": "A28",
+      "terminal": "A",
+      "lat": 40.7856324,
+      "lon": -111.9830838,
+      "type": "narrowbody",
+      "taxiway_exit": "TA",
+      "nose_heading": 0,
+      "parking_lat": 40.7854707,
+      "parking_lon": -111.9830838
+    },
+    {
+      "id": "A29",
+      "terminal": "A",
+      "lat": 40.7859456,
+      "lon": -111.9834753,
+      "type": "narrowbody",
+      "taxiway_exit": "TA",
+      "nose_heading": 180,
+      "parking_lat": 40.7861073,
+      "parking_lon": -111.9834753
+    },
+    {
+      "id": "A30",
+      "terminal": "A",
+      "lat": 40.7856733,
+      "lon": -111.9824659,
+      "type": "narrowbody",
+      "taxiway_exit": "TA",
+      "nose_heading": 0,
+      "parking_lat": 40.7855116,
+      "parking_lon": -111.9824659
+    },
+    {
+      "id": "A31",
+      "terminal": "A",
+      "lat": 40.7859782,
+      "lon": -111.9829749,
+      "type": "narrowbody",
+      "taxiway_exit": "TA",
+      "nose_heading": 180,
+      "parking_lat": 40.7861399,
+      "parking_lon": -111.9829749
+    },
+    {
+      "id": "A32",
+      "terminal": "A",
+      "lat": 40.7857118,
+      "lon": -111.981878,
+      "type": "narrowbody",
+      "taxiway_exit": "TA",
+      "nose_heading": 0,
+      "parking_lat": 40.7855501,
+      "parking_lon": -111.981878
+    },
+    {
+      "id": "A33",
+      "terminal": "A",
+      "lat": 40.7860185,
+      "lon": -111.9823538,
+      "type": "narrowbody",
+      "taxiway_exit": "TA",
+      "nose_heading": 180,
+      "parking_lat": 40.7861802,
+      "parking_lon": -111.9823538
+    },
+    {
+      "id": "A34",
+      "terminal": "A",
+      "lat": 40.7858081,
+      "lon": -111.9812888,
+      "type": "narrowbody",
+      "taxiway_exit": "TA",
+      "nose_heading": 0,
+      "parking_lat": 40.7856464,
+      "parking_lon": -111.9812888
+    },
+    {
+      "id": "A35",
+      "terminal": "A",
+      "lat": 40.786104,
+      "lon": -111.9816872,
+      "type": "narrowbody",
+      "taxiway_exit": "TA",
+      "nose_heading": 180,
+      "parking_lat": 40.7862657,
+      "parking_lon": -111.9816872
+    },
+    {
+      "id": "A36",
+      "terminal": "A",
+      "lat": 40.7858396,
+      "lon": -111.9808048,
+      "type": "narrowbody",
+      "taxiway_exit": "TA",
+      "nose_heading": 0,
+      "parking_lat": 40.7856779,
+      "parking_lon": -111.9808048
+    },
+    {
+      "id": "A37",
+      "terminal": "A",
+      "lat": 40.7860847,
+      "lon": -111.9811815,
+      "type": "narrowbody",
+      "taxiway_exit": "TA",
+      "nose_heading": 180,
+      "parking_lat": 40.7862464,
+      "parking_lon": -111.9811815
+    },
+    {
+      "id": "A38",
+      "terminal": "A",
+      "lat": 40.7858855,
+      "lon": -111.9800801,
+      "type": "narrowbody",
+      "taxiway_exit": "TA",
+      "nose_heading": 0,
+      "parking_lat": 40.7857238,
+      "parking_lon": -111.9800801
+    },
+    {
+      "id": "A39",
+      "terminal": "A",
+      "lat": 40.7861115,
+      "lon": -111.9807494,
+      "type": "narrowbody",
+      "taxiway_exit": "TA",
+      "nose_heading": 180,
+      "parking_lat": 40.7862732,
+      "parking_lon": -111.9807494
+    },
+    {
+      "id": "A40",
+      "terminal": "A",
+      "lat": 40.7859063,
+      "lon": -111.9797594,
+      "type": "narrowbody",
+      "taxiway_exit": "TA",
+      "nose_heading": 0,
+      "parking_lat": 40.7857446,
+      "parking_lon": -111.9797594
+    },
+    {
+      "id": "A41",
+      "terminal": "A",
+      "lat": 40.7861516,
+      "lon": -111.9801604,
+      "type": "narrowbody",
+      "taxiway_exit": "TA",
+      "nose_heading": 180,
+      "parking_lat": 40.7863133,
+      "parking_lon": -111.9801604
+    },
+    {
+      "id": "A42",
+      "terminal": "A",
+      "lat": 40.7859075,
+      "lon": -111.9793324,
+      "type": "narrowbody",
+      "taxiway_exit": "TA",
+      "nose_heading": 0,
+      "parking_lat": 40.7857458,
+      "parking_lon": -111.9793324
+    },
+    {
+      "id": "A43",
+      "terminal": "A",
+      "lat": 40.7861816,
+      "lon": -111.9796981,
+      "type": "narrowbody",
+      "taxiway_exit": "TA",
+      "nose_heading": 180,
+      "parking_lat": 40.7863433,
+      "parking_lon": -111.9796981
+    },
+    {
+      "id": "A44",
+      "terminal": "A",
+      "lat": 40.7859274,
+      "lon": -111.9790158,
+      "type": "narrowbody",
+      "taxiway_exit": "TA",
+      "nose_heading": 0,
+      "parking_lat": 40.7857657,
+      "parking_lon": -111.9790158
+    },
+    {
+      "id": "A45",
+      "terminal": "A",
+      "lat": 40.786252,
+      "lon": -111.97925,
+      "type": "widebody",
+      "taxiway_exit": "TA",
+      "nose_heading": 180,
+      "parking_lat": 40.7864137,
+      "parking_lon": -111.97925
+    },
+    {
+      "id": "A47",
+      "terminal": "A",
+      "lat": 40.7862725,
+      "lon": -111.9789339,
+      "type": "widebody",
+      "taxiway_exit": "TA",
+      "nose_heading": 180,
+      "parking_lat": 40.7864342,
+      "parking_lon": -111.9789339
+    },
+    {
+      "id": "A49",
+      "terminal": "A",
+      "lat": 40.7861267,
+      "lon": -111.9788807,
+      "type": "widebody",
+      "taxiway_exit": "TA",
+      "nose_heading": 180,
+      "parking_lat": 40.7862884,
+      "parking_lon": -111.9788807
+    },
+    {
+      "id": "B1",
+      "terminal": "B",
+      "lat": 40.7888078,
+      "lon": -111.991427,
+      "type": "narrowbody",
+      "taxiway_exit": "TA",
+      "nose_heading": 180,
+      "parking_lat": 40.7889695,
+      "parking_lon": -111.991427
+    },
+    {
+      "id": "B2",
+      "terminal": "B",
+      "lat": 40.7885274,
+      "lon": -111.9916036,
+      "type": "narrowbody",
+      "taxiway_exit": "TA",
+      "nose_heading": 0,
+      "parking_lat": 40.7883657,
+      "parking_lon": -111.9916036
+    },
+    {
+      "id": "B3",
+      "terminal": "B",
+      "lat": 40.7888077,
+      "lon": -111.991045,
+      "type": "narrowbody",
+      "taxiway_exit": "TA",
+      "nose_heading": 180,
+      "parking_lat": 40.7889694,
+      "parking_lon": -111.991045
+    },
+    {
+      "id": "B4",
+      "terminal": "B",
+      "lat": 40.7885013,
+      "lon": -111.9914139,
+      "type": "narrowbody",
+      "taxiway_exit": "TA",
+      "nose_heading": 0,
+      "parking_lat": 40.7883396,
+      "parking_lon": -111.9914139
+    },
+    {
+      "id": "B5",
+      "terminal": "B",
+      "lat": 40.7888579,
+      "lon": -111.9902901,
+      "type": "narrowbody",
+      "taxiway_exit": "TA",
+      "nose_heading": 180,
+      "parking_lat": 40.7890196,
+      "parking_lon": -111.9902901
+    },
+    {
+      "id": "B6",
+      "terminal": "B",
+      "lat": 40.7885448,
+      "lon": -111.9909843,
+      "type": "narrowbody",
+      "taxiway_exit": "TA",
+      "nose_heading": 0,
+      "parking_lat": 40.7883831,
+      "parking_lon": -111.9909843
+    },
+    {
+      "id": "B7",
+      "terminal": "B",
+      "lat": 40.7888899,
+      "lon": -111.9897854,
+      "type": "narrowbody",
+      "taxiway_exit": "TA",
+      "nose_heading": 180,
+      "parking_lat": 40.7890516,
+      "parking_lon": -111.9897854
+    },
+    {
+      "id": "B8",
+      "terminal": "B",
+      "lat": 40.7885918,
+      "lon": -111.9902697,
+      "type": "narrowbody",
+      "taxiway_exit": "TA",
+      "nose_heading": 0,
+      "parking_lat": 40.7884301,
+      "parking_lon": -111.9902697
+    },
+    {
+      "id": "B9",
+      "terminal": "B",
+      "lat": 40.7889398,
+      "lon": -111.9890376,
+      "type": "narrowbody",
+      "taxiway_exit": "TA",
+      "nose_heading": 180,
+      "parking_lat": 40.7891015,
+      "parking_lon": -111.9890376
+    },
+    {
+      "id": "B10",
+      "terminal": "B",
+      "lat": 40.7886319,
+      "lon": -111.9896376,
+      "type": "narrowbody",
+      "taxiway_exit": "TA",
+      "nose_heading": 0,
+      "parking_lat": 40.7884702,
+      "parking_lon": -111.9896376
+    },
+    {
+      "id": "B11",
+      "terminal": "B",
+      "lat": 40.7889637,
+      "lon": -111.9886595,
+      "type": "narrowbody",
+      "taxiway_exit": "TA",
+      "nose_heading": 180,
+      "parking_lat": 40.7891254,
+      "parking_lon": -111.9886595
+    },
+    {
+      "id": "B12",
+      "terminal": "B",
+      "lat": 40.7886753,
+      "lon": -111.9890052,
+      "type": "narrowbody",
+      "taxiway_exit": "TA",
+      "nose_heading": 0,
+      "parking_lat": 40.7885136,
+      "parking_lon": -111.9890052
+    },
+    {
+      "id": "B13",
+      "terminal": "B",
+      "lat": 40.789062,
+      "lon": -111.9878091,
+      "type": "narrowbody",
+      "taxiway_exit": "TA",
+      "nose_heading": 180,
+      "parking_lat": 40.7892237,
+      "parking_lon": -111.9878091
+    },
+    {
+      "id": "B14",
+      "terminal": "B",
+      "lat": 40.7887071,
+      "lon": -111.9885036,
+      "type": "narrowbody",
+      "taxiway_exit": "TA",
+      "nose_heading": 0,
+      "parking_lat": 40.7885454,
+      "parking_lon": -111.9885036
+    },
+    {
+      "id": "B15",
+      "terminal": "B",
+      "lat": 40.7890882,
+      "lon": -111.9873958,
+      "type": "narrowbody",
+      "taxiway_exit": "TA",
+      "nose_heading": 180,
+      "parking_lat": 40.7892499,
+      "parking_lon": -111.9873958
+    },
+    {
+      "id": "B16",
+      "terminal": "B",
+      "lat": 40.7887319,
+      "lon": -111.9877423,
+      "type": "narrowbody",
+      "taxiway_exit": "TA",
+      "nose_heading": 0,
+      "parking_lat": 40.7885702,
+      "parking_lon": -111.9877423
+    },
+    {
+      "id": "B17",
+      "terminal": "B",
+      "lat": 40.7891034,
+      "lon": -111.9871563,
+      "type": "narrowbody",
+      "taxiway_exit": "TA",
+      "nose_heading": 180,
+      "parking_lat": 40.7892651,
+      "parking_lon": -111.9871563
+    },
+    {
+      "id": "B18",
+      "terminal": "B",
+      "lat": 40.7887529,
+      "lon": -111.9874111,
+      "type": "narrowbody",
+      "taxiway_exit": "TA",
+      "nose_heading": 0,
+      "parking_lat": 40.7885912,
+      "parking_lon": -111.9874111
+    },
+    {
+      "id": "B19",
+      "terminal": "B",
+      "lat": 40.7891522,
+      "lon": -111.9863968,
+      "type": "narrowbody",
+      "taxiway_exit": "TA",
+      "nose_heading": 180,
+      "parking_lat": 40.7893139,
+      "parking_lon": -111.9863968
+    },
+    {
+      "id": "B20",
+      "terminal": "B",
+      "lat": 40.7887742,
+      "lon": -111.987075,
+      "type": "narrowbody",
+      "taxiway_exit": "TA",
+      "nose_heading": 0,
+      "parking_lat": 40.7886125,
+      "parking_lon": -111.987075
+    },
+    {
+      "id": "B21",
+      "terminal": "B",
+      "lat": 40.7891676,
+      "lon": -111.9861527,
+      "type": "narrowbody",
+      "taxiway_exit": "TA",
+      "nose_heading": 180,
+      "parking_lat": 40.7893293,
+      "parking_lon": -111.9861527
+    },
+    {
+      "id": "B22",
+      "terminal": "B",
+      "lat": 40.7888215,
+      "lon": -111.986361,
+      "type": "narrowbody",
+      "taxiway_exit": "TA",
+      "nose_heading": 0,
+      "parking_lat": 40.7886598,
+      "parking_lon": -111.986361
+    },
+    {
+      "id": "B23",
+      "terminal": "B",
+      "lat": 40.7892539,
+      "lon": -111.9848527,
+      "type": "widebody",
+      "taxiway_exit": "TA",
+      "nose_heading": 180,
+      "parking_lat": 40.7894156,
+      "parking_lon": -111.9848527
+    },
+    {
+      "id": "B24",
+      "terminal": "B",
+      "lat": 40.7888386,
+      "lon": -111.9860905,
+      "type": "widebody",
+      "taxiway_exit": "TA",
+      "nose_heading": 0,
+      "parking_lat": 40.7886769,
+      "parking_lon": -111.9860905
+    },
+    {
+      "id": "B25",
+      "terminal": "B",
+      "lat": 40.7892753,
+      "lon": -111.9845149,
+      "type": "widebody",
+      "taxiway_exit": "TA",
+      "nose_heading": 180,
+      "parking_lat": 40.789437,
+      "parking_lon": -111.9845149
+    },
+    {
+      "id": "B26",
+      "terminal": "B",
+      "lat": 40.7889271,
+      "lon": -111.9848141,
+      "type": "widebody",
+      "taxiway_exit": "TA",
+      "nose_heading": 0,
+      "parking_lat": 40.7887654,
+      "parking_lon": -111.9848141
+    },
+    {
+      "id": "B27",
+      "terminal": "B",
+      "lat": 40.7893213,
+      "lon": -111.9838454,
+      "type": "widebody",
+      "taxiway_exit": "TA",
+      "nose_heading": 180,
+      "parking_lat": 40.789483,
+      "parking_lon": -111.9838454
+    },
+    {
+      "id": "B28",
+      "terminal": "B",
+      "lat": 40.788943,
+      "lon": -111.9845629,
+      "type": "widebody",
+      "taxiway_exit": "TA",
+      "nose_heading": 0,
+      "parking_lat": 40.7887813,
+      "parking_lon": -111.9845629
+    },
+    {
+      "id": "B29",
+      "terminal": "B",
+      "lat": 40.7893371,
+      "lon": -111.9835946,
+      "type": "widebody",
+      "taxiway_exit": "TA",
+      "nose_heading": 180,
+      "parking_lat": 40.7894988,
+      "parking_lon": -111.9835946
+    },
+    {
+      "id": "B30",
+      "terminal": "B",
+      "lat": 40.7889836,
+      "lon": -111.9838946,
+      "type": "widebody",
+      "taxiway_exit": "TA",
+      "nose_heading": 0,
+      "parking_lat": 40.7888219,
+      "parking_lon": -111.9838946
+    },
+    {
+      "id": "B31",
+      "terminal": "B",
+      "lat": 40.7893619,
+      "lon": -111.9825842,
+      "type": "widebody",
+      "taxiway_exit": "TA",
+      "nose_heading": 180,
+      "parking_lat": 40.7895236,
+      "parking_lon": -111.9825842
+    },
+    {
+      "id": "B32",
+      "terminal": "B",
+      "lat": 40.7890051,
+      "lon": -111.983556,
+      "type": "widebody",
+      "taxiway_exit": "TA",
+      "nose_heading": 0,
+      "parking_lat": 40.7888434,
+      "parking_lon": -111.983556
+    },
+    {
+      "id": "B33",
+      "terminal": "B",
+      "lat": 40.7894016,
+      "lon": -111.9819579,
+      "type": "widebody",
+      "taxiway_exit": "TA",
+      "nose_heading": 180,
+      "parking_lat": 40.7895633,
+      "parking_lon": -111.9819579
+    },
+    {
+      "id": "B34",
+      "terminal": "B",
+      "lat": 40.7890316,
+      "lon": -111.9831374,
+      "type": "widebody",
+      "taxiway_exit": "TA",
+      "nose_heading": 0,
+      "parking_lat": 40.7888699,
+      "parking_lon": -111.9831374
+    },
+    {
+      "id": "B36",
+      "terminal": "B",
+      "lat": 40.7891152,
+      "lon": -111.9823143,
+      "type": "widebody",
+      "taxiway_exit": "TA",
+      "nose_heading": 0,
+      "parking_lat": 40.7889535,
+      "parking_lon": -111.9823143
+    },
+    {
+      "id": "B38",
+      "terminal": "B",
+      "lat": 40.7891384,
+      "lon": -111.9819476,
+      "type": "widebody",
+      "taxiway_exit": "TA",
+      "nose_heading": 0,
+      "parking_lat": 40.7889767,
+      "parking_lon": -111.9819476
+    }
+  ]
+}

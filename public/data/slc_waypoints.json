@@ -1,0 +1,112 @@
+{
+  "metadata": {
+    "airport": "KSLC",
+    "description": "Salt Lake City International Airport — STAR/SID waypoints and approach fixes",
+    "coordinate_system": "WGS84 decimal degrees",
+    "last_updated": "2026-02"
+  },
+  "approach_fixes": {
+    "DEEZZ": { "lat": 40.726, "lon": -111.959, "type": "FAF", "runway": "34R", "altitude_ft": 7600 },
+    "REXRD": { "lat": 40.724, "lon": -111.951, "type": "FAF", "runway": "34L", "altitude_ft": 7600 },
+    "GOLDN": { "lat": 40.830, "lon": -111.998, "type": "FAF", "runway": "16L", "altitude_ft": 7600 },
+    "PRYOR": { "lat": 40.829, "lon": -111.991, "type": "FAF", "runway": "16R", "altitude_ft": 7600 }
+  },
+  "stars": {
+    "PRFCT": {
+      "name": "PRFCT STAR",
+      "description": "East arrival — from Denver, Dallas, Salt Lake approaches from east",
+      "approach_direction": "east",
+      "entry_bearing_from_slc": 105,
+      "waypoints": [
+        { "name": "PRFCT", "lat": 40.573, "lon": -110.914, "altitude_ft": 18000, "speed_kt": 280 },
+        { "name": "IGLOO", "lat": 40.618, "lon": -111.108, "altitude_ft": 16000, "speed_kt": 270 },
+        { "name": "CLMAX", "lat": 40.654, "lon": -111.305, "altitude_ft": 14000, "speed_kt": 260 },
+        { "name": "EVVEY", "lat": 40.683, "lon": -111.508, "altitude_ft": 12000, "speed_kt": 250 },
+        { "name": "KATCH", "lat": 40.714, "lon": -111.703, "altitude_ft": 10000, "speed_kt": 240 },
+        { "name": "DEEZZ", "lat": 40.726, "lon": -111.959, "altitude_ft": 7600,  "speed_kt": 210 }
+      ]
+    },
+    "RNDRV": {
+      "name": "RNDRV STAR",
+      "description": "West arrival — from Los Angeles, San Francisco, Seattle",
+      "approach_direction": "west",
+      "entry_bearing_from_slc": 285,
+      "waypoints": [
+        { "name": "RNDRV", "lat": 41.004, "lon": -113.042, "altitude_ft": 18000, "speed_kt": 280 },
+        { "name": "SKUNK", "lat": 40.960, "lon": -112.742, "altitude_ft": 16000, "speed_kt": 270 },
+        { "name": "WAAAE", "lat": 40.909, "lon": -112.497, "altitude_ft": 14000, "speed_kt": 260 },
+        { "name": "MERDO", "lat": 40.864, "lon": -112.248, "altitude_ft": 12000, "speed_kt": 250 },
+        { "name": "IPUUH", "lat": 40.830, "lon": -112.100, "altitude_ft": 10000, "speed_kt": 240 },
+        { "name": "DEEZZ", "lat": 40.726, "lon": -111.959, "altitude_ft": 7600,  "speed_kt": 210 }
+      ]
+    },
+    "CHERI": {
+      "name": "CHERI STAR",
+      "description": "Southwest arrival — from Las Vegas, Phoenix, Los Angeles (southern route))",
+      "approach_direction": "southwest",
+      "entry_bearing_from_slc": 220,
+      "waypoints": [
+        { "name": "CHERI", "lat": 40.150, "lon": -112.686, "altitude_ft": 18000, "speed_kt": 280 },
+        { "name": "SUNST", "lat": 40.283, "lon": -112.527, "altitude_ft": 16000, "speed_kt": 270 },
+        { "name": "ORANG", "lat": 40.420, "lon": -112.368, "altitude_ft": 14000, "speed_kt": 260 },
+        { "name": "BNGOO", "lat": 40.545, "lon": -112.180, "altitude_ft": 12000, "speed_kt": 250 },
+        { "name": "KETCH", "lat": 40.646, "lon": -112.052, "altitude_ft": 10000, "speed_kt": 240 },
+        { "name": "DEEZZ", "lat": 40.726, "lon": -111.959, "altitude_ft": 7600,  "speed_kt": 210 }
+      ]
+    },
+    "CORKR": {
+      "name": "CORKR STAR",
+      "description": "South arrival — from Phoenix, Tucson, Albuquerque",
+      "approach_direction": "south",
+      "entry_bearing_from_slc": 190,
+      "waypoints": [
+        { "name": "CORKR", "lat": 39.955, "lon": -112.118, "altitude_ft": 19000, "speed_kt": 280 },
+        { "name": "FLUKY", "lat": 40.124, "lon": -112.092, "altitude_ft": 17000, "speed_kt": 270 },
+        { "name": "SALTY", "lat": 40.320, "lon": -112.065, "altitude_ft": 15000, "speed_kt": 260 },
+        { "name": "CEDES", "lat": 40.502, "lon": -112.032, "altitude_ft": 12000, "speed_kt": 250 },
+        { "name": "KETCH", "lat": 40.646, "lon": -112.052, "altitude_ft": 10000, "speed_kt": 240 },
+        { "name": "DEEZZ", "lat": 40.726, "lon": -111.959, "altitude_ft": 7600,  "speed_kt": 210 }
+      ]
+    },
+    "ELBOW": {
+      "name": "ELBOW STAR",
+      "description": "North arrival — from Boise, Portland, Seattle (northern route)",
+      "approach_direction": "north",
+      "entry_bearing_from_slc": 340,
+      "waypoints": [
+        { "name": "ELBOW", "lat": 41.572, "lon": -112.354, "altitude_ft": 16000, "speed_kt": 260 },
+        { "name": "CNTRL", "lat": 41.390, "lon": -112.228, "altitude_ft": 14000, "speed_kt": 250 },
+        { "name": "OGDEN", "lat": 41.194, "lon": -112.016, "altitude_ft": 12000, "speed_kt": 240 },
+        { "name": "JAKER", "lat": 40.982, "lon": -111.994, "altitude_ft": 10000, "speed_kt": 230 },
+        { "name": "GOLDN", "lat": 40.830, "lon": -111.998, "altitude_ft": 7600,  "speed_kt": 210 }
+      ]
+    }
+  },
+  "sids": {
+    "PRFCT_ONE": {
+      "name": "PRFCT ONE Departure",
+      "description": "East departure — initial track eastbound for Denver and beyond",
+      "initial_heading": 105
+    },
+    "CHERI_TWO": {
+      "name": "CHERI TWO Departure",
+      "description": "Southwest departure — for Las Vegas, Los Angeles, Phoenix",
+      "initial_heading": 220
+    },
+    "RNDRV_ONE": {
+      "name": "RNDRV ONE Departure",
+      "description": "West departure — toward San Francisco, Portland, Seattle",
+      "initial_heading": 285
+    },
+    "CORKR_ONE": {
+      "name": "CORKR ONE Departure",
+      "description": "South departure — toward Phoenix, Albuquerque",
+      "initial_heading": 190
+    },
+    "ELBOW_TWO": {
+      "name": "ELBOW TWO Departure",
+      "description": "North departure — toward Boise, Portland",
+      "initial_heading": 340
+    }
+  }
+}

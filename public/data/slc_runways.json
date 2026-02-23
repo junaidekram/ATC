@@ -1,0 +1,162 @@
+{
+  "metadata": {
+    "airport": "KSLC",
+    "description": "Salt Lake City International Airport — SLC runway data",
+    "magnetic_declination_deg": 10.5,
+    "field_elevation_ft": 4227,
+    "last_updated": "2026-02",
+    "source": "OpenStreetMap (airnav.com source) + FAA AIP — real threshold coordinates"
+  },
+  "runways": [
+    {
+      "id": "16L/34R",
+      "id_a": "16L",
+      "id_b": "34R",
+      "heading_a_mag": 161,
+      "heading_b_mag": 341,
+      "heading_a_true": 171.5,
+      "heading_b_true": 351.5,
+      "length_ft": 12003,
+      "width_ft": 150,
+      "threshold_a": {
+        "runway_end": "16L",
+        "lat": 40.7746819,
+        "lon": -111.9731359,
+        "elevation_ft": 4227
+      },
+      "threshold_b": {
+        "runway_end": "34R",
+        "lat": 40.8074433,
+        "lon": -111.9769455,
+        "elevation_ft": 4227
+      },
+      "ils": {
+        "34R": {
+          "localizer_freq_mhz": 110.9,
+          "localizer_identifier": "I-SLC",
+          "glide_slope_deg": 3.0,
+          "faf": "DEEZZ",
+          "dh_ft": 100,
+          "category": "IIIa",
+          "threshold_crossing_height_ft": 55
+        },
+        "16L": {
+          "localizer_freq_mhz": 109.3,
+          "localizer_identifier": "I-RSLC",
+          "glide_slope_deg": 3.0,
+          "faf": null,
+          "dh_ft": 200,
+          "category": "I",
+          "threshold_crossing_height_ft": 55
+        }
+      },
+      "high_speed_exits": {
+        "34R": ["A"],
+        "16L": []
+      },
+      "lighting": {},
+      "pcn": "",
+      "notes": "East parallel runway. ILS CAT IIIa on 34R. 12,003 ft — heavies use in all configs. Coords from OSM/airnav."
+    },
+    {
+      "id": "16R/34L",
+      "id_a": "16R",
+      "id_b": "34L",
+      "heading_a_mag": 161,
+      "heading_b_mag": 341,
+      "heading_a_true": 171.5,
+      "heading_b_true": 351.5,
+      "length_ft": 10600,
+      "width_ft": 150,
+      "threshold_a": {
+        "runway_end": "16R",
+        "lat": 40.7750146,
+        "lon": -111.9954882,
+        "elevation_ft": 4227
+      },
+      "threshold_b": {
+        "runway_end": "34L",
+        "lat": 40.8077351,
+        "lon": -111.9992796,
+        "elevation_ft": 4227
+      },
+      "ils": {
+        "34L": {
+          "localizer_freq_mhz": 111.7,
+          "localizer_identifier": "I-KSLC",
+          "glide_slope_deg": 3.0,
+          "faf": "DEEZZ",
+          "dh_ft": 200,
+          "category": "I",
+          "threshold_crossing_height_ft": 55
+        },
+        "16R": {
+          "localizer_freq_mhz": 108.5,
+          "localizer_identifier": "I-RSLB",
+          "glide_slope_deg": 3.0,
+          "faf": null,
+          "dh_ft": 200,
+          "category": "I",
+          "threshold_crossing_height_ft": 55
+        }
+      },
+      "high_speed_exits": {
+        "34L": ["B"],
+        "16R": []
+      },
+      "lighting": {},
+      "pcn": "",
+      "notes": "West parallel runway. 10,600 ft usable (displaced threshold on 34L end). Coords from OSM/airnav."
+    },
+    {
+      "id": "17/35",
+      "id_a": "17",
+      "id_b": "35",
+      "heading_a_mag": 170,
+      "heading_b_mag": 350,
+      "heading_a_true": 180.0,
+      "heading_b_true": 0.0,
+      "length_ft": 9596,
+      "width_ft": 150,
+      "threshold_a": {
+        "runway_end": "17",
+        "lat": 40.7727352,
+        "lon": -111.9620785,
+        "elevation_ft": 4211
+      },
+      "threshold_b": {
+        "runway_end": "35",
+        "lat": 40.7988859,
+        "lon": -111.9620828,
+        "elevation_ft": 4218
+      },
+      "ils": {
+        "35": {
+          "localizer_freq_mhz": 109.9,
+          "localizer_identifier": "I-WSLC",
+          "glide_slope_deg": 3.0,
+          "faf": "DEEZZ",
+          "dh_ft": 200,
+          "category": "I",
+          "threshold_crossing_height_ft": 55
+        },
+        "17": {
+          "localizer_freq_mhz": null,
+          "localizer_identifier": null,
+          "glide_slope_deg": null,
+          "faf": null,
+          "dh_ft": null,
+          "category": null,
+          "threshold_crossing_height_ft": null
+        }
+      },
+      "high_speed_exits": {
+        "35": [],
+        "17": []
+      },
+      "lighting": {},
+      "pcn": "",
+      "notes": "East crosswind/independent departure runway. 9,596 ft. ILS on 35. East of 16L/34R pair. Coords from OSM/airnav."
+    }
+  ]
+}
