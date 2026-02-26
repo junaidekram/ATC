@@ -109,6 +109,56 @@
       "notes": "West parallel runway. 10,600 ft usable (displaced threshold on 34L end). Coords from OSM/airnav."
     },
     {
+      "id": "14/32",
+      "id_a": "14",
+      "id_b": "32",
+      "heading_a_mag": 142,
+      "heading_b_mag": 322,
+      "heading_a_true": 153.0,
+      "heading_b_true": 333.0,
+      "length_ft": 4894,
+      "width_ft": 150,
+      "threshold_a": {
+        "runway_end": "14",
+        "lat": 40.7857180,
+        "lon": -111.9712406,
+        "elevation_ft": 4224.7
+      },
+      "threshold_b": {
+        "runway_end": "32",
+        "lat": 40.7737553,
+        "lon": -111.9632199,
+        "elevation_ft": 4226.8
+      },
+      "ils": {
+        "14": {
+          "localizer_freq_mhz": null,
+          "localizer_identifier": null,
+          "glide_slope_deg": null,
+          "faf": null,
+          "dh_ft": null,
+          "category": null,
+          "threshold_crossing_height_ft": null
+        },
+        "32": {
+          "localizer_freq_mhz": null,
+          "localizer_identifier": null,
+          "glide_slope_deg": null,
+          "faf": null,
+          "dh_ft": null,
+          "category": null,
+          "threshold_crossing_height_ft": null
+        }
+      },
+      "high_speed_exits": {
+        "14": [],
+        "32": []
+      },
+      "lighting": {},
+      "pcn": "",
+      "notes": "Crosswind runway. ~4,894 ft. No ILS. Threshold coords from FAA AIP."
+    },
+    {
       "id": "17/35",
       "id_a": "17",
       "id_b": "35",
